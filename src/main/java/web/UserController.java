@@ -28,25 +28,34 @@ public class UserController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         super.doPost(request, response);
 
-        request.setCharacterEncoding("UTF8");
-        String name = request.getParameter("name");
-        String password = request.getParameter("password");
-        String email = request.getParameter("email");
+//        request.setCharacterEncoding("UTF8");
+//        String name = request.getParameter("name");
+//        String password = request.getParameter("password");
+//        String email = request.getParameter("email");
+//
+//        System.out.println("Name " + name);
+//        System.out.println("Password " + password);
+//        System.out.println("Email " + email);
 
-        System.out.println("Name " + name);
-        System.out.println("Password " + password);
-        System.out.println("Email " + email);
 
-        if (name != null) {
 //            RequestDispatcher requestDispatcher = request.getRequestDispatcher("jsp/aut.jsp");
 //            requestDispatcher.forward(request, response);
 //            request.getRequestDispatcher("jsp/aut.jsp").forward(request, response);
-        }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        response.sendRedirect("jsp/check.jsp"); // start jsp page check.jsp
         response.sendRedirect("jsp/index.jsp"); // start jsp page check.jsp
+
+        request.setCharacterEncoding("UTF8");
+        String name = request.getParameter("name");
+        String password = request.getParameter("password");
+        String email = request.getParameter("email");
+
+        if(name!=null){
+            response.sendRedirect("jsp/aut.jsp"); // start jsp page check.jsp
+        }
+
     }
 }
