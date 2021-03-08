@@ -11,7 +11,7 @@
     <title>Registration Form</title>
 </head>
 <body>
-<form action="creatUsert" method="POST">
+<form action="creatUser" method="POST">
     <table style="with: 100%">
         <h2>Регистрация</h2>
         <tr>
