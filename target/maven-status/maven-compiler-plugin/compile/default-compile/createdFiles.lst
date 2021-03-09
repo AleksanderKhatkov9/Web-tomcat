@@ -1,1 +1,5 @@
-app\Servlet.class
+dao\UsersDao.class
+web\UserController.class
+web\AuthorizationUser.class
+dao\DaoUser.class
+model\User.class

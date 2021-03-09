@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 //
 //        MysqlDataSource daso = new MysqlDataSource();
 //        String rootPath =
-//                Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("database.properties")).getPath();
+//                Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data.properties")).getPath();
 //
 //        InputStream input = null;
 //
@@ -37,8 +37,8 @@ import java.util.logging.Logger;
 //            daso.setPassword(prop.getProperty("password"));
 //
 //        } catch (FileNotFoundException e) {
-//            LOGGER.log(Level.SEVERE, "File database.properties Not Found", e);
-//            System.err.println("File database.properties Not Found" + " " + e);
+//            LOGGER.log(Level.SEVERE, "File data.properties Not Found", e);
+//            System.err.println("File data.properties Not Found" + " " + e);
 //
 //        } catch (IOException e) {
 //            LOGGER.log(Level.SEVERE, "IO Error", e);

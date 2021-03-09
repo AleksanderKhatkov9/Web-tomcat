@@ -1,49 +1,33 @@
 package dao;
 
-import model.User;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.io.*;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class UsersDao {
+public class UsersDao{
 
-//    public static void main(String[] args) {
-//        try {
-////            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-//            try (Connection conn = getConnection()) {
-//
-//                System.out.println("Connection to Store DB succesfull!");
-//            }
-//        } catch (Exception ex) {
-//            System.out.println("Connection failed...");
-//
-//            System.out.println(ex);
-//        }
-//    }
+    public void getConnection() throws SQLException, IOException {
+
+        Properties prop = new Properties();
+        File file = new File("C:\\Users\\Nameless\\IdeaProjects\\Web-tomcat\\src\\resources\\data.properties");
+        FileInputStream in = new FileInputStream(file);
+        if (in == null) {
+            System.out.println("File read error");
+        } else {
+            System.out.println("Access allowed to the database");
+            prop.load(in);
+            in.close();
+        }
+
+        String database = prop.getProperty("database");
+        String serverName = prop.getProperty("serverName");
+        String port = prop.getProperty("port");
+        String user = prop.getProperty("user");
+        String password = prop.getProperty("password");
+        String driver = prop.getProperty("driver");
 
 
+        System.out.println("DATABASE= "  +database);
 
-    public static Connection getConnection() throws SQLException, IOException {
-
-        Properties props = new Properties();
-
-        FileInputStream in = new FileInputStream("database.properties");
-        props.load(in);
-        String database = props.getProperty("database");
-        String serverName = props.getProperty("serverName");
-        String port = props.getProperty("port");
-        String user = props.getProperty("user");
-        String password = props.getProperty("password");
-
-        System.out.println("DATABASE " + database + " " + "SERVERNAME " + " " + serverName + " PORT " + port + " USER " + user + " " + "PASSWORD ");
-
-        return DriverManager.getConnection(database, serverName, password);
     }
 }
