@@ -37,21 +37,23 @@ public class UserController extends HttpServlet {
         System.out.println("Name " + " POST " + name);
         System.out.println("Password " + " POST " + password);
         System.out.println("Email " + " POST " + email);
-        System.out.println("_____________________________________________");
 
         try {
             if (name != "") {
+                System.out.println("********************************************");
                 User user = new User(name, password, email);
                 System.out.println("USER NAME " + user.getName());
                 System.out.println("USER PASSWORD " + user.getPassword());
                 System.out.println("USER EMAIL " + user.getEmail());
+                System.out.println("********************************************");
+
+                UsersDao usersDao = new UsersDao();
+                usersDao.saveUser(user);
 
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("aut.jsp");
                 requestDispatcher.forward(request, response);
 
-
             } else {
-
                 response.setContentType("text/html; charset=utf-8");
 
                 PrintWriter out = response.getWriter();
@@ -60,7 +62,7 @@ public class UserController extends HttpServlet {
                 out.println("<h3> Вы вели значение.POST " + email + "</h3>");
             }
 
-        } catch (IOException e) {
+        } catch (IOException | SQLException e) {
             System.out.println("Исключение выброшено");
         }
     }
@@ -99,44 +101,5 @@ public class UserController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-//        response.setContentType("text/html; charset=utf-8");
-//        Properties prop = new Properties();
-//        PrintWriter out = response.getWriter();
-//
-//        File file = new File("C:\\Users\\Nameless\\IdeaProjects\\Web-tomcat\\src\\resources\\data.properties");
-//        FileInputStream in = new FileInputStream(file);
-//        if (in == null) {
-//            out.println("<h2>File read error </h2>");
-//        } else {
-//            out.println("<h2>Access allowed to the database</h2>");
-//            prop.load(in);
-//            in.close();
-//        }
-///
-//        String database = prop.getProperty("database");
-//        String serverName = prop.getProperty("serverName");
-//        String port = prop.getProperty("port");
-//        String user = prop.getProperty("user");
-//        String password = prop.getProperty("password");
-//        String driver = prop.getProperty("driver");
-//
-//            out.println("<h2>Вы получили значение.GET-DATABASE:" + " "+database+"</h2>");
-//            out.println("<h2>Вы получили значение.GET-serverName:" + " "+serverName+"</h2>");
-//            out.println("<h2>Вы получили значение.GET-port:" + " "+port+"</h2>");
-//            out.println("<h2>Вы получили значение.GET-user:" + " "+user+"</h2>");
-//            out.println("<h2>Вы получили значение.GET-password:" + " "+password+"</h2>");
-
-        response.setContentType("text/html; charset=utf-8");
-        PrintWriter out = response.getWriter();
-        UsersDao usersDao = new UsersDao();
-        try {
-            usersDao.getConnection();
-            out.println("<h2>Connection</h2>");
-
-        } catch (SQLException throwables) {
-            out.println("<h2>Error Connection </h2>");
-            throwables.printStackTrace();
-        }
     }
 }
