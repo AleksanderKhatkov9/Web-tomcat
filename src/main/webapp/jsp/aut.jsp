@@ -8,11 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Insert title here</title>
+    <title>Form authorization</title>
 </head>
 <body>
-<p>Today <%= new java.util.Date() %>
-</p>
 <form action="authorUser" method="POST">
 <table style="with: 100%">
     <h2>Авторизация</h2>

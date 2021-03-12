@@ -1,5 +1,6 @@
 package dao;
 
+import model.AutoUser;
 import model.User;
 
 import java.io.*;
@@ -61,7 +62,7 @@ public class UsersDao {
             String url = prop.getProperty("url");
             String user = prop.getProperty("user");
             String password = prop.getProperty("password");
-            String driver = prop.getProperty("driver");
+            String driver = prop.getProperty("driver1");
 
             setUserUrl(url);
             setUserDb(user);
@@ -99,40 +100,49 @@ public class UsersDao {
         try {
             getConn();
 
-        int id = user.getId();
-        String name = user.getName();
-        String password = user.getPassword();
-        String email = user.getEmail();
-//            System.out.println("**************************************************");
-//        System.out.println("Connection to Store DB saveUser");
-////        System.out.println("ID= " + id + " NAME= " + name + " PASSWORD= " + password + " EMAIL= " + email);
-//            System.out.println("**************************************************");
-//            System.out.println("FUNCTION == " + getUserPassword());
+            int id = user.getId();
+            id = 1;
+            String name = user.getName();
+            String password = user.getPassword();
+            String email = user.getEmail();
 
             Connection conn;
             Class.forName(getUserDriver());
             conn = DriverManager.getConnection(getUserUrl(), getUserDb(), getUserPassword());
+            System.out.println("ID= " + id + " NAME= " + name + " PASSWORD= " + password + " EMAIL= " + email);
 
+            String sql = "INSERT INTO webdb.user (id,user_name, password, email) Values (?,?,?,?)";
 
-            String query = "INSERT INTO webdb.user" + " (id,user_name, password, email) VALUES " + " (?, ?, ?, ?);";
-//            String sql = "INSERT into stuff (name, description, quantity, location VALUES (?,?,?,?)";
+            PreparedStatement statement = conn.prepareStatement(sql);
 
-            PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, user.getId());
-            statement.setString(1, name);
+            statement.setInt(1, id);
+            statement.setString(2, name);
             statement.setString(3, password);
-            statement.setString(4,email);
-//            statement.executeUpdate(query);
-
+            statement.setString(4, email);
             System.out.println(statement);
+
+            int rows = statement.executeUpdate();
+            System.out.printf("%d rows added", rows);
             conn.close();
 
-
         } catch (ClassNotFoundException e) {
-            System.err.println("Got an exception!");
-            System.err.println(e.getMessage());
-            e.printStackTrace();
+            System.out.println("Connection failed...");
+            System.out.println(e);
         }
+    }
+
+
+    public void validUser(AutoUser autoUser) throws SQLException, IOException {
+
+
+            String name = autoUser.getName();
+            String password = autoUser.getPassword();
+
+            System.out.println("_________________________________");
+            System.out.println("AutoUser"  +name);
+            System.out.println("AutoUser"  +password);
+            System.out.println("_________________________________");
+
 
     }
 }

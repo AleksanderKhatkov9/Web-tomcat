@@ -36,4 +36,17 @@ public class DaoUser {
 //        System.out.println("RESULT"  + rows);
 //        return rows;
 //    }
+
+
+
+
+
+
+
+
+
+
+    //         Statement statement = conn.createStatement();
+//            int rows = statement.executeUpdate("INSERT webdb.user(user_name, password, email) VALUES ('Sasha','12345','bendar@tut.by')");
+//            System.out.printf("Added %d rows", rows);
 }
