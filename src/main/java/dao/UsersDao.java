@@ -62,7 +62,7 @@ public class UsersDao {
             String url = prop.getProperty("url");
             String user = prop.getProperty("user");
             String password = prop.getProperty("password");
-            String driver = prop.getProperty("driver1");
+            String driver = prop.getProperty("driver");
 
             setUserUrl(url);
             setUserDb(user);

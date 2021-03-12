@@ -16,11 +16,11 @@
     <h2>Авторизация</h2>
     <tr>
         <td>UserName</td>
-        <td><input type="text" name="name"/></td>
+        <td><input type="text" name="n"/></td>
     </tr>
     <tr>
         <td>Password</td>
-        <td><input type="password" name="password"/></td>
+        <td><input type="password" name="p"/></td>
     </tr>
 
 </table>

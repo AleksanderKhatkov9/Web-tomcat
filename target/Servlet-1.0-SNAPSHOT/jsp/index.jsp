@@ -3,9 +3,13 @@
 <html>
 <head>
     <title>Creat Web application</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<h2>WEB Application CRUD</h2>
+<div class="container">
+    <div class="jumbotron">
+<h2 class="text-info">WEB Application CRUD</h2>
 <table>
     <tr>
         <td><a href="check.jsp">Регестрация</a></td>
@@ -17,6 +21,7 @@
         <td><a href="creatdao.jsp">База данных</a></td>
     </tr>
 </table>
-
+    </div>
+</div>
 </body>
 </html>

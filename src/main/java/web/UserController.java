@@ -10,12 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.annotation.WebServlet;
 
 
@@ -85,7 +80,6 @@ public class UserController extends HttpServlet {
 //                out.println("<h3> Вы вели значение.GET " + password + "</h3>");
 //                out.println("<h3> Вы вели значение.GET " + email + "</h3>");
             }
-
 
 
 }

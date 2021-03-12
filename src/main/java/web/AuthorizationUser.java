@@ -24,8 +24,8 @@ public class AuthorizationUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF8");
-        String userName = request.getParameter("name");
-        String userPassword = request.getParameter("password");
+        String userName = request.getParameter("n");
+        String userPassword = request.getParameter("p");
 
         System.out.println("Name " + " POST " + userName);
         System.out.println("Password " + " POST " + userPassword);

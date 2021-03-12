@@ -10,10 +10,10 @@
     <servlet-class>web.UserController</servlet-class>
   </servlet>
 
-<!--  <servlet>-->
-<!--    <servlet-name>SecondServlet</servlet-name>-->
-<!--    <servlet-class>web.AuthorizationUser</servlet-class>-->
-<!--  </servlet>-->
+  <servlet>
+    <servlet-name>SecondServlet</servlet-name>
+    <servlet-class>web.AuthorizationUser</servlet-class>
+  </servlet>
 
 
   <servlet-mapping>
@@ -21,10 +21,10 @@
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 
-<!--  <servlet-mapping>-->
-<!--    <servlet-name>SecondServlet</servlet-name>-->
-<!--    <url-pattern>/s</url-pattern>-->
-<!--  </servlet-mapping>-->
+  <servlet-mapping>
+    <servlet-name>SecondServlet</servlet-name>
+    <url-pattern>/s</url-pattern>
+  </servlet-mapping>
 
 
 </web-app>
