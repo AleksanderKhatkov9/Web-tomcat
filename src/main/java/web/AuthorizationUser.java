@@ -18,21 +18,26 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Properties;
 
-@WebServlet("/authorUser")
+@WebServlet(name ="authorUser")
 public class AuthorizationUser extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF8");
-        String userName = request.getParameter("n");
-        String userPassword = request.getParameter("p");
+        String userName = request.getParameter("name");
+        String userPassword = request.getParameter("password");
 
-        System.out.println("Name " + " POST " + userName);
-        System.out.println("Password " + " POST " + userPassword);
+        System.out.println("Name " + " POST-2 " + userName);
+        System.out.println("Password " + " POST-2 " + userPassword);
+
+        PrintWriter out = response.getWriter();
+        out.println("<h3> authorUser </h3>");
+        out.println("<h3> Вы вели значение.POST-2 " + userName + "</h3>");
+        out.println("<h3> Вы вели значение.POST-2 " + userPassword + "</h3>");
+
 
         try {
             if (!Objects.equals(userName, "")) {
-
                 AutoUser autoUser = new AutoUser(userName,userPassword);
                 System.out.println("********************************************");
                 System.out.println("USER NAME " + autoUser.getName());
@@ -45,30 +50,13 @@ public class AuthorizationUser extends HttpServlet {
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("creatdao.jsp");
                 requestDispatcher.forward(request, response);
 
-            } else {
-                response.setContentType("text/html; charset=utf-8");
-
-                PrintWriter out = response.getWriter();
-                out.println("<h3> Вы вели значение.POST  " + userName + "</h3>");
-                out.println("<h3> Вы вели значение.POST " + userPassword + "</h3>");
             }
         } catch (IOException | SQLException e) {
-            System.out.println("Исключение выброшено");
+            System.out.println("Исключение выброшено AuthorizationUser");
         }
     }
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF8");
-//        String name = request.getParameter("name");
-//        String password = request.getParameter("password");
-//        String email = request.getParameter("email");
-        response.setContentType("text/html; charset=utf-8");
-
-        PrintWriter out = response.getWriter();
-        out.println("<h3> Был запущен AuthorUser </h3>");
-
-
-
     }
 }

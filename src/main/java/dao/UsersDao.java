@@ -81,25 +81,18 @@ public class UsersDao {
                 String user_name = resultSet.getString(2);
                 String pass = resultSet.getString(3);
                 String email = resultSet.getString(4);
-
-//                System.out.println("ID= " + id + " NAME= " + user_name + " PASSWORD= " + pass + " EMAIL= " + email);
                 connection = conn;
-
             }
         } catch (Exception ex) {
             System.out.println("Connection failed...");
-
             System.out.println(ex);
-
         }
         return connection;
     }
 
     public void saveUser(User user) throws SQLException, IOException {
-
         try {
             getConn();
-
             int id = user.getId();
             id = 1;
             String name = user.getName();

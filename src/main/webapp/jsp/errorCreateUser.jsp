@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: Nameless
@@ -8,10 +9,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Exception</title>
 </head>
 <body>
-<h2>
-    Error the user is already in the data base</h2>
+<h2>Exception occurred while processing the request</h2>
 </body>
 </html>
