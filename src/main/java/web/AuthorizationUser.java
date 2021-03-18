@@ -27,29 +27,33 @@ public class AuthorizationUser extends HttpServlet {
         String userName = request.getParameter("name");
         String userPassword = request.getParameter("password");
 
-        System.out.println("Name " + " POST-2 " + userName);
-        System.out.println("Password " + " POST-2 " + userPassword);
-
-        PrintWriter out = response.getWriter();
-        out.println("<h3> authorUser </h3>");
-        out.println("<h3> Вы вели значение.POST-2 " + userName + "</h3>");
-        out.println("<h3> Вы вели значение.POST-2 " + userPassword + "</h3>");
+//        System.out.println("Name " + " POST-2 " + userName);
+//        System.out.println("Password " + " POST-2 " + userPassword);
+//
+//        PrintWriter out = response.getWriter();
+//        out.println("<h3> authorUser </h3>");
+//        out.println("<h3> Вы вели значение.POST-2 " + userName + "</h3>");
+//        out.println("<h3> Вы вели значение.POST-2 " + userPassword + "</h3>");
 
 
         try {
             if (!Objects.equals(userName, "")) {
                 AutoUser autoUser = new AutoUser(userName,userPassword);
-                System.out.println("********************************************");
-                System.out.println("USER NAME " + autoUser.getName());
-                System.out.println("USER PASSWORD " + autoUser.getPassword());
-                System.out.println("********************************************");
+//                System.out.println("********************************************");
+//                System.out.println("USER NAME " + autoUser.getName());
+//                System.out.println("USER PASSWORD " + autoUser.getPassword());
+//                System.out.println("********************************************");
 
                 UsersDao usersDao = new UsersDao();
                 usersDao.validUser(autoUser);
 
+
+//                String t = usersDao.validUser();
+
+
+            }else{
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("creatdao.jsp");
                 requestDispatcher.forward(request, response);
-
             }
         } catch (IOException | SQLException e) {
             System.out.println("Исключение выброшено AuthorizationUser");

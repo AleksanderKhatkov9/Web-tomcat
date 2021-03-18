@@ -5,6 +5,8 @@ import model.User;
 
 import java.io.*;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class UsersDao {
@@ -72,17 +74,6 @@ public class UsersDao {
             Class.forName(driver);
             conn = DriverManager.getConnection(url, user, password);
 
-            System.out.println("Connection to Store DB succesfull!");
-            String query = "SELECT * FROM webdb.user";
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {
-                int id = resultSet.getInt(1);
-                String user_name = resultSet.getString(2);
-                String pass = resultSet.getString(3);
-                String email = resultSet.getString(4);
-                connection = conn;
-            }
         } catch (Exception ex) {
             System.out.println("Connection failed...");
             System.out.println(ex);
@@ -125,17 +116,52 @@ public class UsersDao {
     }
 
 
-    public void validUser(AutoUser autoUser) throws SQLException, IOException {
+    public List<String> validUser(AutoUser autoUser) throws SQLException, IOException {
 
-
+        List<String> result = new ArrayList<>();
+        try {
+            getConn();
             String name = autoUser.getName();
             String password = autoUser.getPassword();
 
-            System.out.println("_________________________________");
-            System.out.println("AutoUser"  +name);
-            System.out.println("AutoUser"  +password);
-            System.out.println("_________________________________");
+            System.out.println("AutoUser = "  +name);
+            System.out.println("AutoUser=  "  +password);
 
+
+            /*DATABASE query select*from */
+            Connection conn;
+            Class.forName(getUserDriver());
+            conn = DriverManager.getConnection(getUserUrl(), getUserDb(), getUserPassword());
+            System.out.println(" NAME= " + name + " PASSWORD= " + password );
+            System.out.println("Connection to Store DB successful!!!");
+
+            String query = "SELECT * FROM webdb.user";
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                int id = resultSet.getInt(1);
+                String user_name = resultSet.getString(2);
+                String user_password = resultSet.getString(3);
+                System.out.println("UserName="+ user_name);
+                System.out.println("Password="+ user_password);
+
+                result.add(1,user_name);
+                result.add(2,user_password);
+
+//                if(name.equals(user_name)){
+//                    System.out.println("Yes");
+//                }else{
+//                    System.out.println("No");
+//                }
+
+            }
+
+        } catch (ClassNotFoundException e) {
+            System.out.println("Connection failed...");
+            System.out.println(e);
+        }
+
+        return result;
 
     }
 }
