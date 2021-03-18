@@ -15,11 +15,32 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
 
 @WebServlet(name ="authorUser")
 public class AuthorizationUser extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    private String value1;
+    private String value2;
+
+    public String getValue1() {
+        return value1;
+    }
+
+    public void setValue1(String value1) {
+        this.value1 = value1;
+    }
+
+    public String getValue2() {
+        return value2;
+    }
+
+    public void setValue2(String value2) {
+        this.value2 = value2;
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,31 +48,22 @@ public class AuthorizationUser extends HttpServlet {
         String userName = request.getParameter("name");
         String userPassword = request.getParameter("password");
 
-//        System.out.println("Name " + " POST-2 " + userName);
-//        System.out.println("Password " + " POST-2 " + userPassword);
+//        String val1 = getValue1();
+//        String val2 = getValue2();
 //
-//        PrintWriter out = response.getWriter();
-//        out.println("<h3> authorUser </h3>");
-//        out.println("<h3> Вы вели значение.POST-2 " + userName + "</h3>");
-//        out.println("<h3> Вы вели значение.POST-2 " + userPassword + "</h3>");
+//        System.out.println("V1 " + val1);
+//        System.out.println("V2 " + val2);
 
 
         try {
             if (!Objects.equals(userName, "")) {
-                AutoUser autoUser = new AutoUser(userName,userPassword);
-//                System.out.println("********************************************");
-//                System.out.println("USER NAME " + autoUser.getName());
-//                System.out.println("USER PASSWORD " + autoUser.getPassword());
-//                System.out.println("********************************************");
+                AutoUser autoUser = new AutoUser(userName, userPassword);
 
                 UsersDao usersDao = new UsersDao();
                 usersDao.validUser(autoUser);
 
 
-//                String t = usersDao.validUser();
-
-
-            }else{
+            } else {
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("creatdao.jsp");
                 requestDispatcher.forward(request, response);
             }
@@ -60,7 +72,18 @@ public class AuthorizationUser extends HttpServlet {
         }
     }
 
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    }
+
+
+    public void doParam(List<String> res) {
+        String name1Value = res.get(0);
+        String name2Value = res.get(1);
+
+        setValue1(name1Value);
+        setValue2(name2Value);
+
+        System.out.println("VALUE1 " + getValue1());
+        System.out.println("VALUE2 " + getValue2());
     }
 }

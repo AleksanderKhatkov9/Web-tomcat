@@ -2,6 +2,7 @@ package dao;
 
 import model.AutoUser;
 import model.User;
+import web.AuthorizationUser;
 
 import java.io.*;
 import java.sql.*;
@@ -73,7 +74,6 @@ public class UsersDao {
 
             Class.forName(driver);
             conn = DriverManager.getConnection(url, user, password);
-
         } catch (Exception ex) {
             System.out.println("Connection failed...");
             System.out.println(ex);
@@ -89,26 +89,20 @@ public class UsersDao {
             String name = user.getName();
             String password = user.getPassword();
             String email = user.getEmail();
-
             Connection conn;
             Class.forName(getUserDriver());
             conn = DriverManager.getConnection(getUserUrl(), getUserDb(), getUserPassword());
-            System.out.println("ID= " + id + " NAME= " + name + " PASSWORD= " + password + " EMAIL= " + email);
-
+//            System.out.println("ID= " + id + " NAME= " + name + " PASSWORD= " + password + " EMAIL= " + email);
             String sql = "INSERT INTO webdb.user (id,user_name, password, email) Values (?,?,?,?)";
-
             PreparedStatement statement = conn.prepareStatement(sql);
-
             statement.setInt(1, id);
             statement.setString(2, name);
             statement.setString(3, password);
             statement.setString(4, email);
             System.out.println(statement);
-
             int rows = statement.executeUpdate();
             System.out.printf("%d rows added", rows);
             conn.close();
-
         } catch (ClassNotFoundException e) {
             System.out.println("Connection failed...");
             System.out.println(e);
@@ -117,24 +111,19 @@ public class UsersDao {
 
 
     public List<String> validUser(AutoUser autoUser) throws SQLException, IOException {
-
         List<String> result = new ArrayList<>();
         try {
             getConn();
             String name = autoUser.getName();
             String password = autoUser.getPassword();
-
-            System.out.println("AutoUser = "  +name);
-            System.out.println("AutoUser=  "  +password);
-
-
+            System.out.println("AutoUser = " + name);
+            System.out.println("AutoUser=  " + password);
             /*DATABASE query select*from */
             Connection conn;
             Class.forName(getUserDriver());
             conn = DriverManager.getConnection(getUserUrl(), getUserDb(), getUserPassword());
-            System.out.println(" NAME= " + name + " PASSWORD= " + password );
+            System.out.println("NAME= " + name + " PASSWORD= " + password);
             System.out.println("Connection to Store DB successful!!!");
-
             String query = "SELECT * FROM webdb.user";
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
@@ -142,26 +131,34 @@ public class UsersDao {
                 int id = resultSet.getInt(1);
                 String user_name = resultSet.getString(2);
                 String user_password = resultSet.getString(3);
-                System.out.println("UserName="+ user_name);
-                System.out.println("Password="+ user_password);
+//                System.out.println("UserName="+ user_name);
+//                System.out.println("Password="+ user_password);
+                result.add(user_name);
+                result.add(user_password);
+//                System.out.println("LIST " + result);
 
-                result.add(1,user_name);
-                result.add(2,user_password);
-
-//                if(name.equals(user_name)){
-//                    System.out.println("Yes");
-//                }else{
-//                    System.out.println("No");
-//                }
-
+                run(result); //function
             }
-
         } catch (ClassNotFoundException e) {
             System.out.println("Connection failed...");
             System.out.println(e);
         }
-
         return result;
-
     }
+
+    public List<String> run(List<String> result) {
+        List<String> param = new ArrayList<>();
+        String n = result.get(0);
+        String p = result.get(1);
+        param.add(n);
+        param.add(p);
+//        System.out.println("Name= " + param.get(0));
+//        System.out.println("Password= " + param.get(1));
+
+        AuthorizationUser authorizationUser = new AuthorizationUser();
+        authorizationUser.doParam(param);
+
+        return param;
+    }
+
 }
