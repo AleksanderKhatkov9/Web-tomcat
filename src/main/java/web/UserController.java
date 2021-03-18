@@ -1,6 +1,5 @@
 package web;
 
-import dao.DaoUser;
 import dao.UsersDao;
 import model.User;
 
