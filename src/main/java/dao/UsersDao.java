@@ -2,6 +2,7 @@ package dao;
 
 import model.AutoUser;
 import model.User;
+import model.UserValue;
 import web.AuthorizationUser;
 
 import java.io.*;
@@ -16,6 +17,24 @@ public class UsersDao {
     private String userDb;
     private String userPassword;
     private String userDriver;
+    private String value1;
+    private String value2;
+
+    public String getValue1() {
+        return value1;
+    }
+
+    public void setValue1(String value1) {
+        this.value1 = value1;
+    }
+
+    public String getValue2() {
+        return value2;
+    }
+
+    public void setValue2(String value2) {
+        this.value2 = value2;
+    }
 
     public String getUserUrl() {
         return userUrl;
@@ -137,7 +156,7 @@ public class UsersDao {
                 result.add(user_password);
 //                System.out.println("LIST " + result);
 
-                run(result); //function
+                validList(result); //function
             }
         } catch (ClassNotFoundException e) {
             System.out.println("Connection failed...");
@@ -146,19 +165,31 @@ public class UsersDao {
         return result;
     }
 
-    public List<String> run(List<String> result) {
+    public List<String> validList(List<String> result) {
         List<String> param = new ArrayList<>();
         String n = result.get(0);
         String p = result.get(1);
         param.add(n);
         param.add(p);
+
+
+        UserValue userValue = new UserValue(n,p);
+
+
 //        System.out.println("Name= " + param.get(0));
 //        System.out.println("Password= " + param.get(1));
 
         AuthorizationUser authorizationUser = new AuthorizationUser();
         authorizationUser.doParam(param);
 
+        System.out.println("Usr1" + getValue1());
+        setValue1(p);
+
         return param;
+    }
+
+    public void param (UserValue userValue){
+//        String name = userValue.setParamSqlName();
     }
 
 }
