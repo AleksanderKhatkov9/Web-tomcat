@@ -9,32 +9,18 @@ import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Properties;
 
-public class UsersDao {
+public class UsersDao extends AuthorizationUser{
     private Connection connection;
     private String userUrl;
     private String userDb;
     private String userPassword;
     private String userDriver;
-    private String value1;
-    private String value2;
 
-    public String getValue1() {
-        return value1;
-    }
 
-    public void setValue1(String value1) {
-        this.value1 = value1;
-    }
 
-    public String getValue2() {
-        return value2;
-    }
-
-    public void setValue2(String value2) {
-        this.value2 = value2;
-    }
 
     public String getUserUrl() {
         return userUrl;
@@ -72,6 +58,8 @@ public class UsersDao {
         Properties prop = new Properties();
         File file = new File("C:\\Users\\Nameless\\IdeaProjects\\Web-tomcat\\src\\resources\\data.properties");
         FileInputStream in = new FileInputStream(file);
+
+
         if (in == null) {
             System.out.println("File read error");
         } else {
@@ -128,7 +116,6 @@ public class UsersDao {
         }
     }
 
-
     public List<String> validUser(AutoUser autoUser) throws SQLException, IOException {
         List<String> result = new ArrayList<>();
         try {
@@ -172,24 +159,31 @@ public class UsersDao {
         param.add(n);
         param.add(p);
 
-
-        UserValue userValue = new UserValue(n,p);
-
+        paramValue(param);
 
 //        System.out.println("Name= " + param.get(0));
 //        System.out.println("Password= " + param.get(1));
-
         AuthorizationUser authorizationUser = new AuthorizationUser();
-        authorizationUser.doParam(param);
-
-        System.out.println("Usr1" + getValue1());
-        setValue1(p);
-
+//        authorizationUser.doParam(param);
         return param;
     }
 
-    public void param (UserValue userValue){
-//        String name = userValue.setParamSqlName();
+    public void paramValue (List<String> list){
+        String v1 = list.get(0);
+        String v2 = list.get(1);
+        UserValue userValue = new UserValue(v1,v2);
+        AuthorizationUser authorizationUser = new AuthorizationUser();
+        authorizationUser.fun(userValue);
     }
+
+    public List paramSql(List<String> listValue){
+        List<String> param = new ArrayList<>();
+        String n = listValue.get(0);
+        String p = listValue.get(1);
+        param.add(n);
+        param.add(p);
+        return param;
+    }
+
 
 }
