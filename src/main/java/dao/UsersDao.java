@@ -20,8 +20,6 @@ public class UsersDao extends AuthorizationUser{
     private String userDriver;
 
 
-
-
     public String getUserUrl() {
         return userUrl;
     }
@@ -175,15 +173,5 @@ public class UsersDao extends AuthorizationUser{
         AuthorizationUser authorizationUser = new AuthorizationUser();
         authorizationUser.fun(userValue);
     }
-
-    public List paramSql(List<String> listValue){
-        List<String> param = new ArrayList<>();
-        String n = listValue.get(0);
-        String p = listValue.get(1);
-        param.add(n);
-        param.add(p);
-        return param;
-    }
-
 
 }

@@ -17,8 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@WebServlet(name ="authorUser")
-public class AuthorizationUser extends HttpServlet{
+@WebServlet(name = "authorUser")
+public class AuthorizationUser extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private String value1;
     private String value2;
@@ -46,23 +46,16 @@ public class AuthorizationUser extends HttpServlet{
         String userName = request.getParameter("name");
         String userPassword = request.getParameter("password");
 
-//        String val1 = getValue1();
-//        String val2 = getValue2();
-//
-//        System.out.println("V1 " + val1);
-//        System.out.println("V2 " + val2);
-
-
-
-
-        setValue1(userName);
-
-        f();
+        try {
+            showNewForm(request, response, userName, userPassword);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
         try {
             if (!Objects.equals(userName, "")) {
-                AutoUser autoUser = new AutoUser(userName, userPassword);
 
+                AutoUser autoUser = new AutoUser(userName, userPassword);
                 UsersDao usersDao = new UsersDao();
                 usersDao.validUser(autoUser);
 
@@ -78,12 +71,13 @@ public class AuthorizationUser extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 
+
 //
 //    public List<String> doParam(List<String> res) {
 //        List<String> resParam = new ArrayList<>();
 //        String name1Value = res.get(0);
-//        String name2Value = res.get(1);
-////        setValue1(name1Value);
+//        String namsetValue1e2Value = res.get(1);
+////        (name1Value);
 ////        setValue2(name2Value);
 //        resParam.add(name1Value);
 //        resParam.add(name2Value);
@@ -93,8 +87,7 @@ public class AuthorizationUser extends HttpServlet{
 //    }
 
 
-
-    public void fun(UserValue userValue){
+    public void fun(UserValue userValue) {
         List<String> listParam = new ArrayList<>();
         String valParam1 = userValue.getParamSqlName();
         String valParam2 = userValue.getParamSqlPassword();
@@ -103,26 +96,27 @@ public class AuthorizationUser extends HttpServlet{
         listParam.add(valParam1);
         listParam.add(valParam2);
         funParam(listParam);
-
     }
 
-    public List<String> funParam(List<String> param){
+    public List<String> funParam(List<String> param) {
         List<String> list = new ArrayList<>();
         String name = param.get(0);
-        setValue1(name);
         String password = param.get(1);
-        setValue2(password);
-
-//        System.out.println("T1 " + name);
-//        System.out.println("T2 " + password);
+        System.out.println("T1 " + name);
+        System.out.println("T2 " + password);
         list.add(name);
         list.add(password);
         return list;
     }
 
+    public void showNewForm(HttpServletRequest req, HttpServletResponse resp, String name, String password) throws SQLException, IOException, ServletException {
+        String nameFunc = name;
+        String passwordFunc = password;
+        System.out.println("NAME " + nameFunc);
+        System.out.println("Password " + passwordFunc);
 
-    protected void f(){
-        System.out.println("HHHHH " + getValue1());
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("error.jsp");
+        requestDispatcher.forward(req, resp);
     }
 
 }
