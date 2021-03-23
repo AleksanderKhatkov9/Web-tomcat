@@ -2,6 +2,8 @@ package web;
 
 import dao.UsersDao;
 import model.AutoUser;
+import model.UserP;
+import model.UserParam;
 import model.UserValue;
 
 import javax.servlet.RequestDispatcher;
@@ -20,12 +22,31 @@ import java.util.Objects;
 public class AuthorizationUser extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
+    private  String t1;
+    private String t2;
+
+    public String getT1() {
+        return t1;
+    }
+
+    public void setT1(String t1) {
+        this.t1 = t1;
+    }
+
+    public String getT2() {
+        return t2;
+    }
+
+    public void setT2(String t2) {
+        this.t2 = t2;
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF8");
         String userName = request.getParameter("name");
         String userPassword = request.getParameter("password");
+
 
         try {
             showNewForm(request, response, userName, userPassword);
@@ -72,14 +93,24 @@ public class AuthorizationUser extends HttpServlet {
         List<String> listParam = new ArrayList<>();
         String valParam1 = userValue.getParamSqlName();
         String valParam2 = userValue.getParamSqlPassword();
-//        System.out.println("T1 " + valParam1);
-//        System.out.println("T2 " + valParam2);
+        UserParam userParam = new UserParam(valParam1, valParam2);
 
         listParam.add(valParam1);
         listParam.add(valParam2);
+        paramUser(userParam);
         funParam(listParam);
     }
 
+    public void paramUser(UserParam userParam){
+        String pName = userParam.getUserParamName();
+        String pPassword = userParam.getUserParamPassword();
+        System.out.println("Parameter1 " + pName);
+        System.out.println("Parameter2 " + pPassword);
+
+        UserP user = new UserP();
+        user.setParam1(pName);
+        user.setParam2(pPassword);
+    }
 
     public List<String> funParam(List<String> param) {
         List<String> list = new ArrayList<>();
@@ -89,7 +120,6 @@ public class AuthorizationUser extends HttpServlet {
         System.out.println("T2 " + password);
         list.add(name);
         list.add(password);
-
         return list;
     }
 

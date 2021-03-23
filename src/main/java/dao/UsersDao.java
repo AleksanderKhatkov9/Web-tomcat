@@ -56,8 +56,6 @@ public class UsersDao {
         Properties prop = new Properties();
         File file = new File("C:\\Users\\Nameless\\IdeaProjects\\Web-tomcat\\src\\resources\\data.properties");
         FileInputStream in = new FileInputStream(file);
-
-
         if (in == null) {
             System.out.println("File read error");
         } else {
