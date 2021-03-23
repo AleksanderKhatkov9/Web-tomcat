@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
 
-public class UsersDao extends AuthorizationUser{
+public class UsersDao {
     private Connection connection;
     private String userUrl;
     private String userDb;
