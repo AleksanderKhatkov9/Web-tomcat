@@ -154,9 +154,7 @@ public class UsersDao {
         String p = result.get(1);
         param.add(n);
         param.add(p);
-
         paramValue(param);
-
 //        System.out.println("Name= " + param.get(0));
 //        System.out.println("Password= " + param.get(1));
         AuthorizationUser authorizationUser = new AuthorizationUser();
@@ -169,7 +167,9 @@ public class UsersDao {
         String v2 = list.get(1);
         UserValue userValue = new UserValue(v1,v2);
         AuthorizationUser authorizationUser = new AuthorizationUser();
-        authorizationUser.fun(userValue);
+        authorizationUser.paramDao(userValue);
     }
+
+
 
 }
