@@ -5,14 +5,14 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
-<!--  <servlet>-->
-<!--    <servlet-name>FirstServlet</servlet-name>-->
-<!--    <servlet-class>web.UserController</servlet-class>-->
-<!--  </servlet>-->
-<!--  <servlet-mapping>-->
-<!--    <servlet-name>FirstServlet</servlet-name>-->
-<!--    <url-pattern>/</url-pattern>-->
-<!--  </servlet-mapping>-->
+  <servlet>
+    <servlet-name>FirstServlet</servlet-name>
+    <servlet-class>web.UserController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FirstServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
 
 <!--  <servlet>-->
 <!--    <servlet-name>SecondServlet</servlet-name>-->
@@ -24,20 +24,20 @@
 <!--  </servlet-mapping>-->
 
 
-  <servlet>
-    <servlet-name>ThirdServlet</servlet-name>
-    <servlet-class>web.UserControllerCRUD</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ThirdServlet</servlet-name>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
+<!--  <servlet>-->
+<!--    <servlet-name>ThirdServlet</servlet-name>-->
+<!--    <servlet-class>web.UserControllerCRUD</servlet-class>-->
+<!--  </servlet>-->
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>ThirdServlet</servlet-name>-->
+<!--    <url-pattern>/</url-pattern>-->
+<!--  </servlet-mapping>-->
 
 
 
   <error-page>
     <error-code>404</error-code>
-    <location>/html/404.html</location>
+    <location>/jsp/index1.html</location>
   </error-page>
 
 </web-app>

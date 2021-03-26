@@ -2,8 +2,6 @@ package web;
 
 import dao.UsersDao;
 import model.AutoUser;
-import model.User;
-import model.UserParam;
 import model.UserValue;
 
 import javax.servlet.RequestDispatcher;
@@ -22,6 +20,7 @@ import java.util.Objects;
 public class AuthorizationUser extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF8");
@@ -30,7 +29,11 @@ public class AuthorizationUser extends HttpServlet {
 
         try {
             showNewForm(request, response, userName, userPassword);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
+        try {
             if (!Objects.equals(userName, "")) {
 
                 AutoUser autoUser = new AutoUser(userName, userPassword);
@@ -38,7 +41,7 @@ public class AuthorizationUser extends HttpServlet {
                 usersDao.validUser(autoUser);
 
             } else {
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("error.jsp");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("creatdao.jsp");
                 requestDispatcher.forward(request, response);
             }
         } catch (IOException | SQLException e) {
@@ -64,35 +67,29 @@ public class AuthorizationUser extends HttpServlet {
 //        return resParam;
 //    }
 
+
     public void paramDao(UserValue userValue) {
         List<String> listParam = new ArrayList<>();
         String valParam1 = userValue.getParamSqlName();
         String valParam2 = userValue.getParamSqlPassword();
-        UserParam userParam = new UserParam(valParam1, valParam2);
+//        System.out.println("T1 " + valParam1);
+//        System.out.println("T2 " + valParam2);
 
         listParam.add(valParam1);
         listParam.add(valParam2);
-
-        paramUser(userParam);
         funParam(listParam);
     }
 
-    public void paramUser(UserParam userParam) {
-        String pName = userParam.getUserParamName();
-        String pPassword = userParam.getUserParamPassword();
-        System.out.println("Parameter1 " + pName);
-        System.out.println("Parameter2 " + pPassword);
-
-    }
 
     public List<String> funParam(List<String> param) {
         List<String> list = new ArrayList<>();
         String name = param.get(0);
         String password = param.get(1);
-//        System.out.println("T1 " + name);
-//        System.out.println("T2 " + password);
+        System.out.println("T1 " + name);
+        System.out.println("T2 " + password);
         list.add(name);
         list.add(password);
+
         return list;
     }
 
@@ -102,14 +99,8 @@ public class AuthorizationUser extends HttpServlet {
         System.out.println("NAME " + nameFunc);
         System.out.println("Password " + passwordFunc);
 
-        if (nameFunc  != "") {
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("creatdao.jsp");
-            requestDispatcher.forward(req, resp);
-        } else {
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("error.jsp");
-            requestDispatcher.forward(req, resp);
-        }
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("error.jsp");
+        requestDispatcher.forward(req, resp);
     }
-
 
 }

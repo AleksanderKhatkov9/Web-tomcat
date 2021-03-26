@@ -1,5 +1,4 @@
-dao\UsersDao.class
 web\UserController.class
 web\AuthorizationUser.class
-dao\DaoUser.class
+dao\UsersDao.class
 model\User.class

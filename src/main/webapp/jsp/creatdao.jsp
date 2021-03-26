@@ -9,11 +9,16 @@
 <html>
 <head>
     <title>CREAT DATABASE</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<h2>Creat database the fest java servlet CURD</h2>
+
+<div class="container">
+    <div class="jumbotron">
 <form action="creatdao" method="POST">
     <table style="with: 100%">
+        <h2>Creat database the fest java servlet CURD</h2>
         <h2>Creat book</h2>
         <tr>
             <td>Title</td>
@@ -31,5 +36,7 @@
     </table>
     <input type="submit" value="Submit"/>
 </form>
+</div>
+</div>
 </body>
 </html>

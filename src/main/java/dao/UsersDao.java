@@ -54,7 +54,9 @@ public class UsersDao {
 
     public Connection getConn() throws SQLException, IOException, ClassNotFoundException {
         Properties prop = new Properties();
-        File file = new File("C:\\Users\\Nameless\\IdeaProjects\\Web-tomcat\\src\\resources\\data.properties");
+//        File file = new File("C:\\Users\\Nameless\\IdeaProjects\\Web-tomcat\\src\\resources\\data.properties");
+        File file = new File("C:\\Users\\ipoli\\IdeaProjects\\Web-tomcat\\src\\resources\\data.properties");
+
         FileInputStream in = new FileInputStream(file);
         if (in == null) {
             System.out.println("File read error");
@@ -169,7 +171,4 @@ public class UsersDao {
         AuthorizationUser authorizationUser = new AuthorizationUser();
         authorizationUser.paramDao(userValue);
     }
-
-
-
 }

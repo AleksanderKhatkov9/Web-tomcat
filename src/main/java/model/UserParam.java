@@ -1,28 +1,27 @@
 package model;
 
 public class UserParam {
+    private String param1;
+    private String param2;
 
-    private String userParamName;
-    private String userParamPassword;
-
-    public UserParam(String userParamName, String userParamPassword) {
-        this.userParamName = userParamName;
-        this.userParamPassword = userParamPassword;
+    public UserParam(String param1, String param2) {
+        this.param1 = param1;
+        this.param2 = param2;
     }
 
-    public String getUserParamName() {
-        return userParamName;
+    public String getParam1() {
+        return param1;
     }
 
-    public void setUserParamName(String userParamName) {
-        this.userParamName = userParamName;
+    public void setParam1(String param1) {
+        this.param1 = param1;
     }
 
-    public String getUserParamPassword() {
-        return userParamPassword;
+    public String getParam2() {
+        return param2;
     }
 
-    public void setUserParamPassword(String userParamPassword) {
-        this.userParamPassword = userParamPassword;
+    public void setParam2(String param2) {
+        this.param2 = param2;
     }
 }
