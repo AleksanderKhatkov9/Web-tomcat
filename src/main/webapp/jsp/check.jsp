@@ -16,7 +16,6 @@
 <%--    <script src="jsp/style/js/bootstrap.min.js"></script>--%>
 
 
-
 </head>
 <body>
 <div class="container">
@@ -24,36 +23,32 @@
         <form action="creatUser" method="POST">
             <table class="table">
                 <h3 class="text-info">Регистрация</h3>
-                <img src="resources/jpg/reg.jpg"class="rounded" alt="Cinque Terre" width="200" height="140">
-
-
+                <img src="../../resources/jpg/reg.jpg"  class="rounded" alt="Cinque Terre" width="200" height="160"/><br><br><br>
                 <tr>
                     <td class="text-primary">UserName</td>
-                    <td><input type="text" name="name"/></td>
+                    <td><input type="text" name="name" size="30"/></td>
                 </tr>
                 <tr>
                     <td class="text-primary">Password</td>
-                    <td><input type="password" name="password"/></td>
+                    <td><input type="password" name="password" size="30"/></td>
                 </tr>
                 <tr>
                     <td class="text-primary">Email</td>
-                    <td><input type="email" name="email"/>
+                    <td><input type="email" name="email" size="30"/>
                 </tr>
             </table>
-            <button type="submit"  class="btn btn-success">Submit</button>
+            <button type="отправить" class="btn btn-success">Отправить</button>
         </form>
-
+    </div>
         <div class="jumbotron text-center" style="margin-bottom:0">
             <footer>
                 <p>Author: Alexander Khatkov</p>
                 <p><a href="mailto:bendar01@tut.by">web@example.com</a></p>
                 <p style="font-size:30px">
-                    &#128512; &#128516; &#128525; #128400;
+                    &#128512; &#128516; &#128525; &#128400;
                 </p>
             </footer>
         </div>
-    </div>
-
 </div>
 </body>
 </html>

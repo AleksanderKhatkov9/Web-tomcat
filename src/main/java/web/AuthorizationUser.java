@@ -20,6 +20,12 @@ import java.util.Objects;
 public class AuthorizationUser extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
+    public static String nameValue;
+    public static String passwordValue;
+
+    public static String getPostName;
+    public static String getPostPassword;
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,22 +33,25 @@ public class AuthorizationUser extends HttpServlet {
         String userName = request.getParameter("name");
         String userPassword = request.getParameter("password");
 
-        try {
-            showNewForm(request, response, userName, userPassword);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        getPostName = userName;
+        getPostPassword = userPassword;
+
 
         try {
-            if (!Objects.equals(userName, "")) {
+//            endParam(request, response);
+//            showNewForm(request, response, userName, userPassword);
 
+            if (!userName.equals(" ")) {
                 AutoUser autoUser = new AutoUser(userName, userPassword);
                 UsersDao usersDao = new UsersDao();
                 usersDao.validUser(autoUser);
 
+                RequestDispatcher requestDispatcher1 = request.getRequestDispatcher("creatdao.jsp");
+                requestDispatcher1.forward(request, response);
+
             } else {
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("creatdao.jsp");
-                requestDispatcher.forward(request, response);
+                RequestDispatcher requestDispatcher2 = request.getRequestDispatcher("error.jsp");
+                requestDispatcher2.forward(request, response);
             }
         } catch (IOException | SQLException e) {
             System.out.println("Исключение выброшено AuthorizationUser");
@@ -72,8 +81,11 @@ public class AuthorizationUser extends HttpServlet {
         List<String> listParam = new ArrayList<>();
         String valParam1 = userValue.getParamSqlName();
         String valParam2 = userValue.getParamSqlPassword();
-//        System.out.println("T1 " + valParam1);
-//        System.out.println("T2 " + valParam2);
+//        System.out.println("paramDao T1 " + valParam1);
+//        System.out.println("paramDao T2 " + valParam2);
+
+        nameValue = valParam1;
+        passwordValue =valParam2;
 
         listParam.add(valParam1);
         listParam.add(valParam2);
@@ -85,11 +97,12 @@ public class AuthorizationUser extends HttpServlet {
         List<String> list = new ArrayList<>();
         String name = param.get(0);
         String password = param.get(1);
-        System.out.println("T1 " + name);
-        System.out.println("T2 " + password);
+//        System.out.println("T1 " + name);
+//        System.out.println("T2 " + password);
         list.add(name);
         list.add(password);
 
+        endParam();
         return list;
     }
 
@@ -98,9 +111,17 @@ public class AuthorizationUser extends HttpServlet {
         String passwordFunc = password;
         System.out.println("NAME " + nameFunc);
         System.out.println("Password " + passwordFunc);
+//        RequestDispatcher requestDispatcher = req.getRequestDispatcher("error.jsp");
+//        requestDispatcher.forward(req, resp);
+    }
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("error.jsp");
-        requestDispatcher.forward(req, resp);
+    public void endParam(){
+        String sName = nameValue;
+        System.out.println("END-Name "  +sName);
+        String sPassword = passwordValue;
+        System.out.println("END-Password "  +sPassword);
+        System.out.println("END-3 "  + getPostName);
+        System.out.println("END-4 " + getPostPassword);
     }
 
 }

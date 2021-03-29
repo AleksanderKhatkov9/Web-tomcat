@@ -15,22 +15,40 @@
 <body>
 <div class="container">
     <div class="jumbotron">
-<form action="authorUser" method="POST">
-<table style="with: 100%">
-    <h2>Авторизация</h2>
-    <tr>
-        <td>UserName</td>
-        <td><input type="text" name="name"/></td>
-    </tr>
-    <tr>
-        <td>Password</td>
-        <td><input type="password" name="password"/></td>
-    </tr>
+        <form action="authorUser" method="POST">
+            <table class="table">
+                <h3 style="color: Blue">Авторизация</h3>
+                <br>
 
-</table>
-<input type="submit" value="Submit"/>
-</form>
-</div>
+                <img src="webapp/resources/jpg/aut.jpg" class="rounded" alt="Cinque Terre" width="200" height="180">
+                <br><br><br>
+
+                <tr>
+                    <td class="text-primary">Имя</td>
+                    <td><input type="name" id="name" name="name" value="name" size="30"/></td>
+                </tr>
+                <tr>
+                    <td class="text-primary">Пароль</td>
+                    <td><input type="password" id="password" name="password" value="password" size="30"/></td>
+                </tr>
+            </table>
+            <button type="submit" class="btn btn-success">Отправить</button>
+        </form>
+
+    </div>
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <footer>
+            <p style="color: #443fff">Author: Alexander Khatkov</p>
+            <p><a href="mailto:bendar01@tut.by">web@example.com</a></p>
+            <p style="font-size:30px">
+                &#128512; &#128516; &#128525; &#128400;
+            </p>
+        </footer>
+
+
+    </div>
+
+
 </div>
 </body>
 </html>

@@ -13,30 +13,55 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-
 <div class="container">
     <div class="jumbotron">
-<form action="creatdao" method="POST">
-    <table style="with: 100%">
-        <h2>Creat database the fest java servlet CURD</h2>
-        <h2>Creat book</h2>
-        <tr>
-            <td>Title</td>
-            <td><input type="text" name="title"/></td>
-        </tr>
-        <tr>
-            <td>Author</td>
-            <td><input type="text" name="author"/></td>
-        </tr>
-        <tr>
-            <td>Price</td>
-            <td><input type="number" name="price"/></td>
-        </tr>
+        <form action="creatdao" method="POST">
+            <table class="table">
+                <h3>Creat database the fest java servlet CURD</h3>
+                <h3 style="color: Blue">Creat book</h3>
+                <br>
 
-    </table>
-    <input type="submit" value="Submit"/>
-</form>
-</div>
+                <img src="jpg\book.jpg" class="rounded" alt="Cinque Terre" width="200" height="180">
+<%--                C:\Users\ipoli\IdeaProjects\Web-tomcat\src\main\resources\jpg\book.jpg--%>
+<%--                jpg\book.jpg--%>
+<%--                --%>
+                <br><br><br>
+                <tr>
+                    <td class="text-primary">Title</td>
+                    <td><input type="text" id="title" name="title" value="title" size="30"/></td>
+                </tr>
+                <tr>
+                    <td class="text-primary">Author</td>
+                    <td><input type="text" id="author" name="author" value="author" size="30"/>
+                </tr>
+
+                <tr>
+                    <td class="text-primary">Price</td>
+                    <td><input type="text" id="price" name="price" value="price" size="30"/>
+                </tr>
+                </tr>
+
+            </table>
+            <button type="отправить" class="btn btn-success">Отправить</button>
+        </form>
+
+    </div>
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <footer>
+            <p style="color: #443fff">Author: Alexander Khatkov</p>
+            <p><a href="mailto:bendar01@tut.by">web@example.com</a></p>
+            <p style="font-size:30px">
+                &#128512; &#128516; &#128525; &#128400;
+            </p>
+        </footer>
+    </div>
+
+
+
+
+
+
+
 </div>
 </body>
 </html>

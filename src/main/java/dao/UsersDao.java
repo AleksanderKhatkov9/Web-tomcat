@@ -19,7 +19,6 @@ public class UsersDao {
     private String userPassword;
     private String userDriver;
 
-
     public String getUserUrl() {
         return userUrl;
     }
@@ -120,8 +119,8 @@ public class UsersDao {
             getConn();
             String name = autoUser.getName();
             String password = autoUser.getPassword();
-            System.out.println("AutoUser = " + name);
-            System.out.println("AutoUser=  " + password);
+            System.out.println("AutoUser1 = " + name);
+            System.out.println("AutoUser2=  " + password);
             /*DATABASE query select*from */
             Connection conn;
             Class.forName(getUserDriver());
@@ -157,8 +156,8 @@ public class UsersDao {
         param.add(n);
         param.add(p);
         paramValue(param);
-//        System.out.println("Name= " + param.get(0));
-//        System.out.println("Password= " + param.get(1));
+        System.out.println("Name-Dao= " + param.get(0));
+        System.out.println("Password-Dao = " + param.get(1));
         AuthorizationUser authorizationUser = new AuthorizationUser();
 //        authorizationUser.doParam(param);
         return param;

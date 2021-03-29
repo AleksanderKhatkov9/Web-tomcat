@@ -5,23 +5,23 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
-  <servlet>
-    <servlet-name>FirstServlet</servlet-name>
-    <servlet-class>web.UserController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>FirstServlet</servlet-name>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
-
 <!--  <servlet>-->
-<!--    <servlet-name>SecondServlet</servlet-name>-->
-<!--    <servlet-class>web.AuthorizationUser</servlet-class>-->
+<!--    <servlet-name>FirstServlet</servlet-name>-->
+<!--    <servlet-class>web.UserController</servlet-class>-->
 <!--  </servlet>-->
 <!--  <servlet-mapping>-->
-<!--    <servlet-name>SecondServlet</servlet-name>-->
+<!--    <servlet-name>FirstServlet</servlet-name>-->
 <!--    <url-pattern>/</url-pattern>-->
 <!--  </servlet-mapping>-->
+
+  <servlet>
+    <servlet-name>SecondServlet</servlet-name>
+    <servlet-class>web.AuthorizationUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SecondServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
 
 
 <!--  <servlet>-->
