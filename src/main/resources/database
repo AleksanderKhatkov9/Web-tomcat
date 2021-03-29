@@ -1,0 +1,25 @@
+CREATE DATABASE webdb;
+USE webdb;
+CREATE TABLE user (
+   id int(3) NOT NULL,
+   user_name varchar(20) DEFAULT NULL,
+   password varchar(20) DEFAULT NULL,
+   email varchar(20) DEFAULT NULL,
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO webdb.user(id, user_name, password,email) VALUES('1','Sasha','1','bendar@tut.by');
+DROP TABLE webdb.user;
+
+SELECT * FROM webdb.user;
+DROP TABLE webdb.user;
+use webdb;
+CREATE TABLE user (
+   id INT PRIMARY KEY AUTO_INCREMENT,
+   user_name varchar(20) DEFAULT NULL,
+   password varchar(20) DEFAULT NULL,
+   email varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO webdb.user(id, user_name, password,email) VALUES('1','Sasha','1','bendar@tut.by');
+SELECT * FROM webdb.user;
