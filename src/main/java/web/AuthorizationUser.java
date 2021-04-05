@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,7 @@ public class AuthorizationUser extends HttpServlet {
     public static String getPostPassword;
 
 
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF8");
@@ -40,6 +43,7 @@ public class AuthorizationUser extends HttpServlet {
         try {
 //            endParam(request, response);
 //            showNewForm(request, response, userName, userPassword);
+            showNewForm(request, response);
 
             if (!userName.equals(" ")) {
                 AutoUser autoUser = new AutoUser(userName, userPassword);
@@ -61,8 +65,6 @@ public class AuthorizationUser extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 
-
-//
 //    public List<String> doParam(List<String> res) {
 //        List<String> resParam = new ArrayList<>();
 //        String name1Value = res.get(0);
@@ -81,47 +83,94 @@ public class AuthorizationUser extends HttpServlet {
         List<String> listParam = new ArrayList<>();
         String valParam1 = userValue.getParamSqlName();
         String valParam2 = userValue.getParamSqlPassword();
-//        System.out.println("paramDao T1 " + valParam1);
-//        System.out.println("paramDao T2 " + valParam2);
+
+//        byte valPar1 = Byte.parseByte(userValue.getParamSqlName());
+//        byte valPar2 = Byte.parseByte(userValue.getParamSqlName());
+
+
+//        byte[] bytes1;
+//        try {
+//            bytes1 = valParam1.getBytes("UTF-8");
+//            aByte = bytes1;
+////            String text1 = new String(bytes1, "UTF-8");
+////            System.out.println("Byte " + text1);
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }
 
         nameValue = valParam1;
-        passwordValue =valParam2;
+        passwordValue = valParam2;
+
+
+
+        String doParam = endParam();
+        System.out.println("Post " + doParam);
+
 
         listParam.add(valParam1);
         listParam.add(valParam2);
         funParam(listParam);
     }
 
-
     public List<String> funParam(List<String> param) {
         List<String> list = new ArrayList<>();
         String name = param.get(0);
         String password = param.get(1);
-//        System.out.println("T1 " + name);
-//        System.out.println("T2 " + password);
         list.add(name);
         list.add(password);
 
-        endParam();
+
+        String doParam = endParam();
+        System.out.println("Post " + doParam);
+
         return list;
     }
 
-    public void showNewForm(HttpServletRequest req, HttpServletResponse resp, String name, String password) throws SQLException, IOException, ServletException {
-        String nameFunc = name;
-        String passwordFunc = password;
-        System.out.println("NAME " + nameFunc);
-        System.out.println("Password " + passwordFunc);
+
+    public String endParam() {
+        String resultParam;
+        String sName = nameValue;
+        String sPassword = passwordValue;
+        String doPostName = getPostName;
+        String doPostPassword = getPostPassword;
+        System.out.println("nameValue: " + sName);
+        System.out.println("passwordValue " + sPassword);
+        System.out.println("getPostName " + doPostName);
+        System.out.println("getPostPassword " + doPostPassword);
+
+        if (sName.equals(doPostName) & sPassword.equals(doPostPassword)) {
+            resultParam = "Yes";
+//            System.out.println("Yes " +resultParam);
+//            res = resultParam;
+        } else {
+            resultParam = "No";
+//            System.out.println("No " + resultParam);
+//            res = resultParam;
+        }
+        return resultParam;
+    }
+
+
+    public void showNewForm(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ServletException {
+        req.setCharacterEncoding("UTF8");
+
+//        byte[] bytes10;
+//        bytes10 = aByte;
+//        String text1 = new String(bytes10, "UTF-8");
+//        System.out.println("Byte " + text1);
+
+        PrintWriter out = resp.getWriter();
+        out.println("<h3> AutoUser </h3>");
+        out.println("<h3> Вы вели значение.GET  " + nameValue + "</h3>");
+        out.println("<h3> Вы вели значение.GET " + passwordValue + "</h3>");
+
+        System.out.println("Error-1 " + nameValue);
+        System.out.println("Error2 " + passwordValue);
+
+
 //        RequestDispatcher requestDispatcher = req.getRequestDispatcher("error.jsp");
 //        requestDispatcher.forward(req, resp);
     }
 
-    public void endParam(){
-        String sName = nameValue;
-        System.out.println("END-Name "  +sName);
-        String sPassword = passwordValue;
-        System.out.println("END-Password "  +sPassword);
-        System.out.println("END-3 "  + getPostName);
-        System.out.println("END-4 " + getPostPassword);
-    }
 
 }

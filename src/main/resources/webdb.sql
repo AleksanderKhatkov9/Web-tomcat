@@ -1,0 +1,41 @@
+/*Drop*/
+Drop database webdb;
+drop table user;
+drop table book;
+
+/*Create*/
+CREATE DATABASE webdb;
+
+USE webdb;
+CREATE TABLE user (
+   user_id INT PRIMARY KEY AUTO_INCREMENT,
+   user_name varchar(20) DEFAULT NULL,
+   password varchar(20) DEFAULT NULL,
+   email varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+create table book(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	title varchar(20) DEFAULT NULL,
+	author varchar(20) DEFAULT NULL,
+	price varchar(20) DEFAULT NULL,
+	user_id int  REFERENCES book (id)
+)
+ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*1*/
+SELECT * FROM webdb.user;
+INSERT INTO webdb.user(user_id, user_name, password,email) VALUES(1 ,'Sasha','1234','bendar@tut.by');
+/*2*/
+SELECT * FROM webdb.book;
+INSERT INTO webdb.book(id, title, author, price) VALUES(1 ,'Java EE','Horstman','50.0');
+
+SELECT user.user_name, user.password, user.email, book.title, book.author, book.price from user,book;
+-- INNER Join user ON book ON user.user_id  = book.book_id;
+
+DELETE FROM webdb.book WHERE id= 1;
+
+INSERT INTO  webdb.book(book_id, title, author, price) Values (1,'java EE','Horstman','700');
+
+
+

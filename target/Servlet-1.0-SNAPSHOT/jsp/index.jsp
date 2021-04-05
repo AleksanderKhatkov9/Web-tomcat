@@ -25,7 +25,7 @@
     <div class="jumbotron text-center" style="margin-bottom:0">
         <footer>
             <p>
-                <img src=" https://onlibank.ru/uploads/posts/2019-11/medium/1573374380_1.jpg" class="rounded" alt="Cinque Terre" width="400" height="350">
+                <img src=" https://onlibank.ru/uploads/posts/2019-11/medium/1573374380_1.jpg" class="rounded" alt="Cinque Terre" width="300" height="250">
             </p>
 
 

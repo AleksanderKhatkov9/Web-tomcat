@@ -37,7 +37,7 @@ public class UserController extends HttpServlet {
 
 
         try {
-            if (name != " ") {
+            if (name != " " & password !=" ") {
 //                System.out.println("********************************************");
                 User user = new User(name, password, email);
 //                System.out.println("USER NAME " + user.getName());

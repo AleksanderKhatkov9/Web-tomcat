@@ -15,7 +15,7 @@
 <body>
 <div class="container">
     <div class="jumbotron">
-        <form action="creatdao" method="POST">
+        <form action="creatDao" method="POST">
             <table class="table">
                 <h3>Creat database the fest java servlet CURD</h3>
                 <h3 style="color: Blue">Creat book</h3>
@@ -55,13 +55,6 @@
             </p>
         </footer>
     </div>
-
-
-
-
-
-
-
 </div>
 </body>
 </html>

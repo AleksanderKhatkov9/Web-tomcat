@@ -20,7 +20,10 @@
                 <h3 style="color: Blue">Авторизация</h3>
                 <br>
 
-                <img src="webapp/resources/jpg/aut.jpg" class="rounded" alt="Cinque Terre" width="200" height="180">
+                <img src="/home/sasha/IdeaProjects/Web-tomcat/src/main/resources/jpg/aut.jpg" class="rounded" alt="Cinque Terre" width="200" height="180">
+
+
+
                 <br><br><br>
 
                 <tr>

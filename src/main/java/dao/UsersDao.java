@@ -54,7 +54,9 @@ public class UsersDao {
     public Connection getConn() throws SQLException, IOException, ClassNotFoundException {
         Properties prop = new Properties();
 //        File file = new File("C:\\Users\\Nameless\\IdeaProjects\\Web-tomcat\\src\\resources\\data.properties");
-        File file = new File("C:\\Users\\ipoli\\IdeaProjects\\Web-tomcat\\src\\resources\\data.properties");
+//        File file = new File("C:\\Users\\ipoli\\IdeaProjects\\Web-tomcat\\src\\resources\\data.properties");
+        File file = new File( "//home//sasha//IdeaProjects//Web-tomcat//src//main//resources//data.properties");
+
 
         FileInputStream in = new FileInputStream(file);
         if (in == null) {
@@ -97,7 +99,7 @@ public class UsersDao {
             Class.forName(getUserDriver());
             conn = DriverManager.getConnection(getUserUrl(), getUserDb(), getUserPassword());
 //            System.out.println("ID= " + id + " NAME= " + name + " PASSWORD= " + password + " EMAIL= " + email);
-            String sql = "INSERT INTO webdb.user (id,user_name, password, email) Values (?,?,?,?)";
+            String sql = "INSERT INTO webdb.book (id,user_name, password, email) Values (?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, id);
             statement.setString(2, name);
@@ -120,7 +122,7 @@ public class UsersDao {
             String name = autoUser.getName();
             String password = autoUser.getPassword();
             System.out.println("AutoUser1 = " + name);
-            System.out.println("AutoUser2=  " + password);
+            System.out.println("AutoUser2 =  " + password);
             /*DATABASE query select*from */
             Connection conn;
             Class.forName(getUserDriver());

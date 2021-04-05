@@ -14,24 +14,24 @@
 <!--    <url-pattern>/</url-pattern>-->
 <!--  </servlet-mapping>-->
 
-  <servlet>
-    <servlet-name>SecondServlet</servlet-name>
-    <servlet-class>web.AuthorizationUser</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>SecondServlet</servlet-name>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
-
-
 <!--  <servlet>-->
-<!--    <servlet-name>ThirdServlet</servlet-name>-->
-<!--    <servlet-class>web.UserControllerCRUD</servlet-class>-->
+<!--    <servlet-name>SecondServlet</servlet-name>-->
+<!--    <servlet-class>web.AuthorizationUser</servlet-class>-->
 <!--  </servlet>-->
 <!--  <servlet-mapping>-->
-<!--    <servlet-name>ThirdServlet</servlet-name>-->
+<!--    <servlet-name>SecondServlet</servlet-name>-->
 <!--    <url-pattern>/</url-pattern>-->
 <!--  </servlet-mapping>-->
+
+
+  <servlet>
+    <servlet-name>ThirdServlet</servlet-name>
+    <servlet-class>web.UserControllerCRUD</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ThirdServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
 
 
 
