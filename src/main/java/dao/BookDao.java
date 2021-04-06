@@ -63,10 +63,8 @@ public class BookDao {
             Connection conn;
             Class.forName(bookDriver);
             conn = DriverManager.getConnection(bookUrl, bookDb, bookPassword);
-//            System.out.println("ID= " + id + " NAME= " + name + " PASSWORD= " + password + " EMAIL= " + email);
             String sql = "INSERT INTO webdb.book (id, title, author, price) Values (?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
-
             statement.setInt(1, id);
             statement.setString(2, title);
             statement.setString(3, author);
@@ -90,14 +88,21 @@ public class BookDao {
             conn = DriverManager.getConnection(bookUrl, bookDb, bookPassword);
 //
             String sql = "SELECT * FROM webdb.book";
-
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
+//                int id = resultSet.getInt(1);
+//                String title = resultSet.getString(2);
+//                String author = resultSet.getString(3);
+//                String price = resultSet.getString(4);
+
                 int id = resultSet.getInt(1);
                 String title = resultSet.getString(2);
                 String author = resultSet.getString(3);
                 String price = resultSet.getString(4);
+
+
+                System.out.println("id = " + id + " title= " + title + " author= " + author + " price = " + price);
 
                 Book book = new Book(id, title, author, price);
                 listBook.add(book);
@@ -131,8 +136,6 @@ public class BookDao {
     }
 
     public void updateBook(Book book) throws SQLException {
-//        String sql = "UPDATE book SET title = ?, author = ?, price = ?";
-//        sql += " WHERE book_id = ?";
         try {
             getConnBook();
             Connection conn;
@@ -140,13 +143,45 @@ public class BookDao {
             conn = DriverManager.getConnection(bookUrl, bookDb, bookPassword);
             String sql = "UPDATE book SET title = ?, author = ?, price = ? WHERE id=?";
             PreparedStatement statement = conn.prepareStatement(sql);
-
-
+            statement.setString(1, book.getTitle());
+            statement.setString(2, book.getAuthor());
+            statement.setString(3, book.getPrice());
+            statement.setInt(4, book.getId());
+            System.out.println(statement);
+            int rows = statement.executeUpdate();
+            System.out.printf("%d rows added", rows);
+            conn.close();
         } catch (ClassNotFoundException | IOException e) {
             System.out.println("Connection failed...");
             System.out.println(e);
         }
     }
 
+    public Book getBook(int id) throws SQLException {
+        Book book = null;
+        String sql = "SELECT * FROM book WHERE book_id = ?";
+        try {
+            getConnBook();
+            Connection conn;
+            Class.forName(bookDriver);
+            conn = DriverManager.getConnection(bookUrl, bookDb, bookPassword);
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                String title = resultSet.getString("title");
+                String author = resultSet.getString("author");
+                String price = resultSet.getString("price");
+                book = new Book(id, title, author, price);
+            }
+            resultSet.close();
+            statement.close();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return book;
+    }
 }
