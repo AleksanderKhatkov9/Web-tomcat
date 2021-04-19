@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
     <title>Form authorization</title>
@@ -20,9 +22,8 @@
                 <h3 style="color: Blue">Авторизация</h3>
                 <br>
 
-                <img src="/home/sasha/IdeaProjects/Web-tomcat/src/main/resources/jpg/aut.jpg" class="rounded" alt="Cinque Terre" width="200" height="180">
-
-
+                <img src="/home/sasha/IdeaProjects/Web-tomcat/src/main/resources/jpg/aut.jpg" class="rounded"
+                     alt="Cinque Terre" width="200" height="180">
 
                 <br><br><br>
 
@@ -47,11 +48,7 @@
                 &#128512; &#128516; &#128525; &#128400;
             </p>
         </footer>
-
-
     </div>
-
-
 </div>
 </body>
 </html>

@@ -34,6 +34,7 @@ SELECT user.user_name, user.password, user.email, book.title, book.author, book.
 -- INNER Join user ON book ON user.user_id  = book.book_id;
 
 DELETE FROM webdb.book WHERE id= 1;
+DELETE FROM webdb.book WHERE id  BETWEEN 60 AND 70;
 
 INSERT INTO  webdb.book(book_id, title, author, price) Values (1,'java EE','Horstman','700');
 

@@ -23,16 +23,25 @@
 <!--    <url-pattern>/</url-pattern>-->
 <!--  </servlet-mapping>-->
 
+<!--  -->
+<!--  <servlet>-->
+<!--    <servlet-name>ThirdServlet</servlet-name>-->
+<!--    <servlet-class>web.DaoController</servlet-class>-->
+<!--  </servlet>-->
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>ThirdServlet</servlet-name>-->
+<!--    <url-pattern>/</url-pattern>-->
+<!--  </servlet-mapping>-->
+
 
   <servlet>
-    <servlet-name>ThirdServlet</servlet-name>
-    <servlet-class>web.BookController</servlet-class>
+    <servlet-name>ForServlet</servlet-name>
+    <servlet-class>web.DaoController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ThirdServlet</servlet-name>
+    <servlet-name>ForServlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-
 
 
   <error-page>
