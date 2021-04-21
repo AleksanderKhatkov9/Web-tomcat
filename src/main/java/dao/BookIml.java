@@ -69,14 +69,12 @@ public class BookIml implements BookDAO {
                 String title = resultSet.getString("title");
                 String author = resultSet.getString("author");
                 String price = resultSet.getString("price");
-                System.out.println("Title=" + title);
-                System.out.println("listAllBooks: " + "id = " + id + " title= " + title + " author= " + author + " price = " + price);
                 Book book = new Book(id, title, author, price);
+                System.out.println("Book= " + "id = " +  book.getId() + " title=" + book.getTitle()+ " author= " +  book.getAuthor() + " price = " + book.getPrice());
                 listBook.add(book);
-                resultSet.close();
-                statement.close();
-                conn.close();
+                System.out.println(book);
             }
+
         } catch (ClassNotFoundException | IOException | SQLException e) {
             System.out.println("Connection failed...");
             System.out.println(e);

@@ -19,6 +19,7 @@ public class DaoController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doGet(req, resp);
+
     }
 
     @Override
@@ -40,8 +41,8 @@ public class DaoController extends HttpServlet {
 //                BookIml bookIml = new BookIml();
 ////                bookIml.save(book);
 
-                  saveBook(req, resp);
-//                listBook(req,resp);
+//                saveBook(req, resp);
+                listBook(req,resp);
 //                updateBook(req,resp);
 //                deleteBook(req,resp);
 
@@ -86,7 +87,6 @@ public class DaoController extends HttpServlet {
         bookIml.get(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("BookForm.jsp");
         dispatcher.forward(request, response);
-
     }
 
     private void updateBook(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
