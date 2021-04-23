@@ -100,8 +100,6 @@ public class BookIml implements BookDAO {
                 String price = resultSet.getString("price");
                 book = new Book(id, title, author, price);
             }
-            resultSet.close();
-            statement.close();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -120,7 +118,6 @@ public class BookIml implements BookDAO {
             String title = book.getTitle();
             String author = book.getAuthor();
             String price = book.getPrice();
-
             Connection conn;
             Class.forName(bookDriver);
             conn = DriverManager.getConnection(bookUrl, bookDb, bookPassword);

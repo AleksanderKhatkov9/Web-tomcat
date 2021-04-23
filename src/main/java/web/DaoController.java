@@ -20,6 +20,32 @@ public class DaoController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doGet(req, resp);
 
+        String action = req.getServletPath();
+
+        try {
+            switch (action) {
+//                case "/new":
+//                    showNewForm(req, resp);
+//                    break;
+                case "/insert":
+                    saveBook(req, resp);
+                    break;
+                case "/delete":
+                    deleteBook(req, resp);
+                    break;
+                case "/edit":
+                    showEditForm(req, resp);
+                    break;
+                case "/update":
+                    updateBook(req, resp);
+                    break;
+                default:
+                    listBook(req, resp);
+                    break;
+            }
+        } catch (SQLException ex) {
+            throw new ServletException(ex);
+        }
     }
 
     @Override

@@ -7,70 +7,39 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<<html>
+<%@ page isELIgnored="false" %>
+<html>
 <head>
     <title>Books Store Application</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-<body>
-<center>
-    <h1>Books Management</h1>
-    <h2>
-        <a href="/new">Add New Book</a>
-        &nbsp;&nbsp;&nbsp;
-        <a href="/list">List All Books</a>
 
-    </h2>
-</center>
-<div align="center">
-    <c:if test="${book != null}">
-    <form action="update" method="post">
-        </c:if>
-        <c:if test="${book == null}">
-        <form action="insert" method="post">
-            </c:if>
-            <table border="1" cellpadding="5">
-                <caption>
-                    <h2>
-                        <c:if test="${book != null}">
-                            Edit Book
-                        </c:if>
-                        <c:if test="${book == null}">
-                            Add New Book
-                        </c:if>
-                    </h2>
-                </caption>
-                <c:if test="${book != null}">
-                    <input type="hidden" name="id" value="<c:out value='${book.id}' />" />
-                </c:if>
-                <tr>
-                    <th>Title: </th>
-                    <td>
-                        <input type="text" name="title" size="45" value="<c:out value='${book.title}' />"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Author: </th>
-                    <td>
-                        <input type="text" name="author" size="45"
-                               value="<c:out value='${book.author}' />"
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <th>Price: </th>
-                    <td>
-                        <input type="text" name="price" size="5"
-                               value="<c:out value='${book.price}' />"
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="center">
-                        <input type="submit" value="Save" />
-                    </td>
-                </tr>
-            </table>
-        </form>
+<body>
+<div class="container">
+    <div class="jumbotron">
+    <form action="insert" method="post">
+        <table class="table">
+            <h3 class="text-info">Edit book</h3>
+            <tr>
+                <td class="text-primary">Title</td>
+                <td><input type="text" id="title" name="title" value="title" size="30"/></td>
+            </tr>
+            <tr>
+                <td class="text-primary">Author</td>
+                <td><input type="text" id="author" name="author" value="author" size="30"/>
+            </tr>
+            <tr>
+                <td class="text-primary">Price</td>
+                <td><input type="text" id="price" name="price" value="price" size="30"/>
+            </tr>
+
+        </table>
+        <button type="отправить" class="btn btn-success">Отправить</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="отмена" class="btn btn-danger">Отмена</button>
+    </form>
+</div>
 </div>
 </body>
 </html>
