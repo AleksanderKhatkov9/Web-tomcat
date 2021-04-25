@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "creatDao", urlPatterns = {"/s"})
+//@WebServlet(name = "creatDao", urlPatterns = {"/s"})
 public class DaoController extends HttpServlet {
 
     @Override
@@ -21,15 +21,16 @@ public class DaoController extends HttpServlet {
         super.doGet(req, resp);
 
         String action = req.getServletPath();
+        System.out.println("Action: " +action);
 
         try {
             switch (action) {
 //                case "/new":
 //                    showNewForm(req, resp);
 //                    break;
-                case "/insert":
-                    saveBook(req, resp);
-                    break;
+//                case "/insert":
+//                    saveBook(req, resp);
+//                    break;
                 case "/delete":
                     deleteBook(req, resp);
                     break;
@@ -39,6 +40,11 @@ public class DaoController extends HttpServlet {
                 case "/update":
                     updateBook(req, resp);
                     break;
+                case "/list":
+                    listBook(req, resp);
+                    break;
+                case "/ed":
+                    System.out.println("ED");
                 default:
                     listBook(req, resp);
                     break;
