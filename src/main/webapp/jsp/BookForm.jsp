@@ -18,7 +18,7 @@
 <body>
 <div class="container">
     <div class="jumbotron">
-    <form action="insert" method="post">
+    <form action="insert" method="POST">
         <table class="table">
             <h3 class="text-info">Edit book</h3>
             <tr>

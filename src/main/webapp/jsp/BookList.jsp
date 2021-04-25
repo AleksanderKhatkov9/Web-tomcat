@@ -17,6 +17,7 @@
 <body>
 <div class="container">
     <div class="jumbotron">
+        <a href="creatdao.jsp"/> Add book</a>
         <table class="table">
             <h2 class="align-content-center">List of Books</h2>
             <tr>

@@ -45,6 +45,8 @@
 
             </table>
             <button type="отправить" class="btn btn-success">Отправить</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="отмена" class="btn btn-danger">Отмена</button>
         </form>
 
     </div>
