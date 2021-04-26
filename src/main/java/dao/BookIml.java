@@ -21,7 +21,8 @@ public class BookIml implements BookDAO {
     public Connection getConnBook() throws SQLException, IOException, ClassNotFoundException {
         Properties prop = new Properties();
 //        File file = new File("//home//sasha//IdeaProjects//Web-tomcat//src//main//resources//data.properties");
-        File file = new File("C://Users//ipoli//IdeaProjects//Web-tomcat//src//main//resources//data.properties");
+//        File file = new File("C://Users//ipoli//IdeaProjects//Web-tomcat//src//main//resources//data.properties");
+        File file = new File( "C:\\Users\\benda\\IdeaProjects\\Web-tomcat\\src\\main\\resources\\data.properties");
         FileInputStream in = new FileInputStream(file);
         if (in == null) {
             System.out.println("File read error");
@@ -70,7 +71,7 @@ public class BookIml implements BookDAO {
                 String author = resultSet.getString("author");
                 String price = resultSet.getString("price");
                 Book book = new Book(id, title, author, price);
-                System.out.println("Book= " + "id = " +  book.getId() + " title=" + book.getTitle()+ " author= " +  book.getAuthor() + " price = " + book.getPrice());
+//                System.out.println("Book= " + "id = " +  book.getId() + " title=" + book.getTitle()+ " author= " +  book.getAuthor() + " price = " + book.getPrice());
                 listBook.add(book);
                 System.out.println(book);
             }

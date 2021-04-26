@@ -16,35 +16,76 @@ import java.util.List;
 //@WebServlet(name = "creatDao", urlPatterns = {"/s"})
 public class DaoController extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+//    @Override
+//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        super.doGet(req, resp);
+//
+//        String action = req.getServletPath();
+//        System.out.println("Action: " +action);
+//
+//        try {
+//            switch (action) {
+////                case "/new":
+////                    showNewForm(req, resp);
+////                    break;
+////                case "/insert":
+////                    saveBook(req, resp);
+////                    break;
+//                case "/delete":
+//                    deleteBook(req, resp);
+//                    break;
+//                case "/edit":
+//                    showEditForm(req, resp);
+//                    break;
+//                case "/update":
+//                    updateBook(req, resp);
+//                    break;
+//                case "/list":
+//                    listBook(req, resp);
+//                    break;
+//                case "/ed":
+//                    System.out.println("ED");
+//                default:
+//                    listBook(req, resp);
+//                    break;
+//            }
+//        } catch (SQLException ex) {
+//            throw new ServletException(ex);
+//        }
+//    }
 
+
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF8");
         String action = req.getServletPath();
-        System.out.println("Action: " +action);
-
+        String input = action.replaceAll("/jsp/", "");
+        System.out.println("Action: " + input);
         try {
-            switch (action) {
-//                case "/new":
-//                    showNewForm(req, resp);
-//                    break;
-//                case "/insert":
-//                    saveBook(req, resp);
-//                    break;
+            switch (input) {
+                case "insert":
+                    saveBook(req, resp);
+                    System.out.println("INSERT" + input);
+                    break;
+                case "list":
+                    listBook(req, resp);
+                    System.out.println("LIST");
+                    listBook(req, resp);
+                    break;
                 case "/delete":
-                    deleteBook(req, resp);
+//                    deleteBook(req, resp);
+                    System.out.println("DELETE");
                     break;
                 case "/edit":
-                    showEditForm(req, resp);
+//                    showEditForm(req, resp);
+                    System.out.println("EDIT");
                     break;
                 case "/update":
-                    updateBook(req, resp);
-                    break;
-                case "/list":
-                    listBook(req, resp);
+//                    updateBook(req, resp);
+                    System.out.println("UPDATE");
                     break;
                 case "/ed":
                     System.out.println("ED");
+                    showNewForm(req, resp);
                 default:
                     listBook(req, resp);
                     break;
@@ -52,46 +93,49 @@ public class DaoController extends HttpServlet {
         } catch (SQLException ex) {
             throw new ServletException(ex);
         }
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("errorCreateUser.jsp");
+        requestDispatcher.forward(req, resp);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF8");
-        String bookTitle = req.getParameter("title");
-        String bookAuthor = req.getParameter("author");
-//      float bookPrice = Float.parseFloat(req.getParameter("price"));
-        String bookPrice = req.getParameter("price");
 
-        System.out.println("Book title " + bookTitle);
-        System.out.println("Book author " + bookAuthor);
-        System.out.println("Book price " + bookPrice);
-
-        try {
-            if (bookTitle != " " & bookAuthor != " ") {
-                System.out.println("********************************************");
-//                Book book = new Book(bookTitle, bookAuthor, bookPrice);
-//                BookIml bookIml = new BookIml();
-////                bookIml.save(book);
-
-//                saveBook(req, resp);
-                listBook(req,resp);
-//                updateBook(req,resp);
-//                deleteBook(req,resp);
-
-
-//                RequestDispatcher dispatcher = req.getRequestDispatcher("BookList.jsp");
-//                dispatcher.forward(req, resp);
-            } else {
-                RequestDispatcher requestDispatcher = req.getRequestDispatcher("errorCreateUser.jsp");
-                requestDispatcher.forward(req, resp);
-            }
-        } catch (IOException | SQLException e) {
-            System.out.println("Исключение выброшено UserControllerDAO");
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("errorCreateUser.jsp");
-            requestDispatcher.forward(req, resp);
-        }
-    }
-
+//    @Override
+//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        req.setCharacterEncoding("UTF8");
+//        String bookTitle = req.getParameter("title");
+//        String bookAuthor = req.getParameter("author");
+////      float bookPrice = Float.parseFloat(req.getParameter("price"));
+//        String bookPrice = req.getParameter("price");
+//
+//        System.out.println("Book title " + bookTitle);
+//        System.out.println("Book author " + bookAuthor);
+//        System.out.println("Book price " + bookPrice);
+//
+//        try {
+//            if (bookTitle != " " & bookAuthor != " ") {
+//                System.out.println("********************************************");
+////                Book book = new Book(bookTitle, bookAuthor, bookPrice);
+////                BookIml bookIml = new BookIml();
+//////                bookIml.save(book);
+//
+////                saveBook(req, resp);
+//                listBook(req,resp);
+////                updateBook(req,resp);
+////                deleteBook(req,resp);
+//
+//
+////                RequestDispatcher dispatcher = req.getRequestDispatcher("BookList.jsp");
+////                dispatcher.forward(req, resp);
+//            } else {
+//                RequestDispatcher requestDispatcher = req.getRequestDispatcher("errorCreateUser.jsp");
+//                requestDispatcher.forward(req, resp);
+//            }
+//        } catch (IOException | SQLException e) {
+//            System.out.println("Исключение выброшено UserControllerDAO");
+//            RequestDispatcher requestDispatcher = req.getRequestDispatcher("errorCreateUser.jsp");
+//            requestDispatcher.forward(req, resp);
+//        }
+//    }
+//
 
     private void saveBook(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         BookIml bookIml = new BookIml();
@@ -139,5 +183,11 @@ public class DaoController extends HttpServlet {
         bookIml.delete(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("BookList.jsp");
         dispatcher.forward(request, response);
+    }
+
+    private void showNewForm(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException, SQLException {
+        RequestDispatcher dispatcher = req.getRequestDispatcher("BookList.jsp");
+        dispatcher.forward(req, resp);
     }
 }

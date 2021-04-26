@@ -17,17 +17,16 @@
 <body>
 <div class="container">
     <div class="jumbotron">
-<%--        <form action="creatDao" method="POST">--%>
-            <form action="<%=request.getContextPath() %>/insert">
+        <a href="ListAllBook.jsp"/> Add ListBook</a>
+        <%--        <form action="creatDao" method="POST">--%>
+        <form action="insert" method="POST">
             <table class="table">
                 <h3>Creat database the fest java servlet CURD</h3>
                 <h3 style="color: Blue">Creat book</h3>
                 <br>
 
                 <img src="jpg\book.jpg" class="rounded" alt="Cinque Terre" width="200" height="180">
-<%--                C:\Users\ipoli\IdeaProjects\Web-tomcat\src\main\resources\jpg\book.jpg--%>
-<%--                jpg\book.jpg--%>
-<%--                --%>
+
                 <br><br><br>
                 <tr>
                     <td class="text-primary">Title</td>

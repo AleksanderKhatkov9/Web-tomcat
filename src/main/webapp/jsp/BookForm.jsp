@@ -19,7 +19,8 @@
 <div class="container">
     <div class="jumbotron">
 <%--    <form action="insert" method="POST">--%>
-    <form action="<%=request.getContextPath() %>/ed">
+<%--    <form action="<%=request.getContextPath() %>/ed">--%>
+        <form action=edit" method="POST">
         <table class="table">
             <h3 class="text-info">Edit book</h3>
             <tr>
