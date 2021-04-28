@@ -20,9 +20,8 @@ public class BookIml implements BookDAO {
     @Override
     public Connection getConnBook() throws SQLException, IOException, ClassNotFoundException {
         Properties prop = new Properties();
-//        File file = new File("//home//sasha//IdeaProjects//Web-tomcat//src//main//resources//data.properties");
+        File file = new File("//home//sasha//IdeaProjects//Web-tomcat//src//main//resources//data.properties");
 //        File file = new File("C://Users//ipoli//IdeaProjects//Web-tomcat//src//main//resources//data.properties");
-        File file = new File( "C:\\Users\\benda\\IdeaProjects\\Web-tomcat\\src\\main\\resources\\data.properties");
         FileInputStream in = new FileInputStream(file);
         if (in == null) {
             System.out.println("File read error");
@@ -71,7 +70,7 @@ public class BookIml implements BookDAO {
                 String author = resultSet.getString("author");
                 String price = resultSet.getString("price");
                 Book book = new Book(id, title, author, price);
-//                System.out.println("Book= " + "id = " +  book.getId() + " title=" + book.getTitle()+ " author= " +  book.getAuthor() + " price = " + book.getPrice());
+                System.out.println("Book= " + "id = " +  book.getId() + " title=" + book.getTitle()+ " author= " +  book.getAuthor() + " price = " + book.getPrice());
                 listBook.add(book);
                 System.out.println(book);
             }
@@ -86,7 +85,7 @@ public class BookIml implements BookDAO {
     @Override
     public Book get(int id) {
         Book book = null;
-        String sql = "SELECT * FROM webdb.book WHERE book_id = ?";
+        String sql = "SELECT * FROM webdb.book WHERE id = ?";
         try {
             getConnBook();
             Connection conn;
@@ -100,6 +99,7 @@ public class BookIml implements BookDAO {
                 String author = resultSet.getString("author");
                 String price = resultSet.getString("price");
                 book = new Book(id, title, author, price);
+                System.out.println("EDIT " + book);
             }
 
         } catch (IOException e) {
@@ -174,7 +174,7 @@ public class BookIml implements BookDAO {
             Connection conn;
             Class.forName(bookDriver);
             conn = DriverManager.getConnection(bookUrl, bookDb, bookPassword);
-            String sql = "DELETE FROM book where book_id =" + id;
+            String sql = "DELETE FROM book where id =" + id;
             PreparedStatement statement = conn.prepareStatement(sql);
             System.out.println(statement);
             int rows = statement.executeUpdate();

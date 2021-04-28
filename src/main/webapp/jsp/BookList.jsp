@@ -17,30 +17,44 @@
 <body>
 <div class="container">
     <div class="jumbotron">
-        <a href="creatdao.jsp"/> Add book</a>
-        <table class="table">
-            <h2 class="align-content-center">List of Books</h2>
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Price</th>
-                <th>Actions</th>
-            </tr>
-            <c:forEach var="book" items="${listBook}">
-                <tr>
-                    <td><c:out value="${book.id}"/></td>
-                    <td><c:out value="${book.title}"/></td>
-                    <td><c:out value="${book.author}"/></td>
-                    <td><c:out value="${book.price}"/></td>
-                    <td>
-                        <a href="BookForm.jsp"<c:out value='${book.id}' />">Edit</a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="/delete?id=<c:out value='${book.id}' />">Delete</a>
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>
+        <a href="menu.jsp"><img
+                src="https://img2.freepng.ru/20180429/zte/kisspng-computer-icons-avatar-user-laptop-5ae67d2c9fba76.3873242315250547646543.jpg"
+                width="50" height="50" alt="Пример"></a>
+        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+
+        <a href="creatdao.jsp"/><img
+            src="http://s1.iconbird.com/ico/2013/8/429/w128h1281377937728185024computerimac3.png"
+            width="50" height="50" alt="Пример"></a>
+
+            <form action="list" method="POST">
+                <table class="table">
+                    <h2 class="align-content-center">List of Books</h2>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                    <c:forEach var="book" items="${listBook}">
+                        <tr>
+                            <td><c:out value="${book.id}"/></td>
+                            <td><c:out value="${book.title}"/></td>
+                            <td><c:out value="${book.author}"/></td>
+                            <td><c:out value="${book.price}"/></td>
+                            <td>
+                                <a href="edit?id=<c:out value='${book.id}' />">Edit</a>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="delete?id=<c:out value='${book.id}' />">Delete</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+<%--                    <c:if test="${book.id != null}">--%>
+<%--                    <form action="update" method="POST">--%>
+<%--                        </c:if>--%>
+                </table>
+                <button type="submit" class="btn btn-success">submit</button>
+            </form>
     </div>
 </div>
 </body>

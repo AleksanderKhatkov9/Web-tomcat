@@ -17,16 +17,18 @@
 <body>
 <div class="container">
     <div class="jumbotron">
-        <a href="ListAllBook.jsp"/> Add ListBook</a>
         <%--        <form action="creatDao" method="POST">--%>
+        <a href="menu.jsp"><img
+
+                src="https://img2.freepng.ru/20180429/zte/kisspng-computer-icons-avatar-user-laptop-5ae67d2c9fba76.3873242315250547646543.jpg"
+                width="50" height="50" alt="Пример"></a>
+        <br><br><br>
         <form action="insert" method="POST">
             <table class="table">
-                <h3>Creat database the fest java servlet CURD</h3>
                 <h3 style="color: Blue">Creat book</h3>
                 <br>
-
-                <img src="jpg\book.jpg" class="rounded" alt="Cinque Terre" width="200" height="180">
-
+                <img src="https://image.freepik.com/free-vector/man-avatar-and-books_24877-10533.jpg" class="rounded"
+                     alt="Cinque Terre" width="200" height="180">
                 <br><br><br>
                 <tr>
                     <td class="text-primary">Title</td>
@@ -42,11 +44,10 @@
                     <td><input type="text" id="price" name="price" value="price" size="30"/>
                 </tr>
                 </tr>
-
             </table>
-            <button type="отправить" class="btn btn-success">Отправить</button>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="отмена" class="btn btn-danger">Отмена</button>
+            <button type="submit" class="btn btn-success">submit</button>
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="cancel" class="btn btn-danger">cancel</button>
         </form>
 
     </div>

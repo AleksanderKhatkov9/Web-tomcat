@@ -17,12 +17,16 @@
 <body>
 <div class="container">
     <div class="jumbotron">
+        <a href="menu.jsp"><img
+                src="https://img2.freepng.ru/20180429/zte/kisspng-computer-icons-avatar-user-laptop-5ae67d2c9fba76.3873242315250547646543.jpg"
+                width="50" height="50" alt="Пример"></a>
+        <br><br><br>
         <form action="authorUser" method="POST">
             <table class="table">
                 <h3 style="color: Blue">Авторизация</h3>
                 <br>
 
-                <img src="/home/sasha/IdeaProjects/Web-tomcat/src/main/resources/jpg/aut.jpg" class="rounded"
+                <img src="https://proslang.ru/wp-content/uploads/2019/03/avatarka_1-300x300.jpg" class="rounded"
                      alt="Cinque Terre" width="200" height="180">
 
                 <br><br><br>
@@ -36,9 +40,9 @@
                     <td><input type="password" id="password" name="password" value="password" size="30"/></td>
                 </tr>
             </table>
-            <button type="submit" class="btn btn-success">Отправить</button>
+            <button type="submit" class="btn btn-success">submit</button>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="отмена" class="btn btn-danger">Отмена</button>
+            <button type="cancel" class="btn btn-danger">cancel</button>
         </form>
 
     </div>

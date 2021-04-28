@@ -16,87 +16,34 @@ import java.util.List;
 //@WebServlet(name = "creatDao", urlPatterns = {"/s"})
 public class DaoController extends HttpServlet {
 
-//    @Override
-//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        super.doGet(req, resp);
-//
-//        String action = req.getServletPath();
-//        System.out.println("Action: " +action);
-//
-//        try {
-//            switch (action) {
-////                case "/new":
-////                    showNewForm(req, resp);
-////                    break;
-////                case "/insert":
-////                    saveBook(req, resp);
-////                    break;
-//                case "/delete":
-//                    deleteBook(req, resp);
-//                    break;
-//                case "/edit":
-//                    showEditForm(req, resp);
-//                    break;
-//                case "/update":
-//                    updateBook(req, resp);
-//                    break;
-//                case "/list":
-//                    listBook(req, resp);
-//                    break;
-//                case "/ed":
-//                    System.out.println("ED");
-//                default:
-//                    listBook(req, resp);
-//                    break;
-//            }
-//        } catch (SQLException ex) {
-//            throw new ServletException(ex);
-//        }
-//    }
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doGet(req, resp);
 
-
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF8");
         String action = req.getServletPath();
+        System.out.println(action);
         String input = action.replaceAll("/jsp/", "");
         System.out.println("Action: " + input);
+
         try {
             switch (input) {
-                case "insert":
-                    saveBook(req, resp);
-                    System.out.println("INSERT" + input);
-                    break;
-                case "list":
-                    listBook(req, resp);
-                    System.out.println("LIST");
-                    listBook(req, resp);
-                    break;
-                case "/delete":
-//                    deleteBook(req, resp);
-                    System.out.println("DELETE");
-                    break;
-                case "/edit":
-//                    showEditForm(req, resp);
+//                case "insert":
+//                    saveBook(req, resp);
+//                    System.out.println("INSERT" + input);
+//                    break;
+                case "edit":
+                    showEditForm(req, resp);
                     System.out.println("EDIT");
                     break;
-                case "/update":
-//                    updateBook(req, resp);
-                    System.out.println("UPDATE");
-                    break;
-                case "/ed":
-                    System.out.println("ED");
-                    showNewForm(req, resp);
-                default:
-                    listBook(req, resp);
+                case "delete":
+                    deleteBook(req, resp);
+                    System.out.println("DELETE");
                     break;
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
         }
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("errorCreateUser.jsp");
-        requestDispatcher.forward(req, resp);
     }
-
 
 //    @Override
 //    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -135,7 +82,45 @@ public class DaoController extends HttpServlet {
 //            requestDispatcher.forward(req, resp);
 //        }
 //    }
-//
+
+
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String action = req.getServletPath();
+        String input = action.replaceAll("/jsp/", "");
+        System.out.println("Action: " + input);
+        try {
+            switch (input) {
+                case "insert":
+                    saveBook(req, resp);
+                    System.out.println("INSERT" + input);
+                    break;
+                case "list":
+                    listBook(req, resp);
+                    System.out.println("LIST");
+                    break;
+//                case "delete":
+//                    deleteBook(req, resp);
+//                    System.out.println("DELETE");
+//                    break;
+                case "edit":
+                    showEditForm(req, resp);
+                    System.out.println("EDIT");
+                    break;
+                case "update":
+                    updateBook(req, resp);
+                    System.out.println("UPDATE");
+                    break;
+                default:
+                    listBook(req, resp);
+                    break;
+            }
+        } catch (SQLException ex) {
+            throw new ServletException(ex);
+        }
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("errorCreateUser.jsp");
+        requestDispatcher.forward(req, resp);
+    }
+
 
     private void saveBook(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         BookIml bookIml = new BookIml();
@@ -145,7 +130,7 @@ public class DaoController extends HttpServlet {
         Book newBook = new Book(title, author, price);
         bookIml.save(newBook);
 //        response.sendRedirect("listBook");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("BookList.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -159,15 +144,16 @@ public class DaoController extends HttpServlet {
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         BookIml bookIml = new BookIml();
-        int id = Integer.parseInt(request.getParameter("book.id"));
+        int id = Integer.parseInt(request.getParameter("id"));
+        System.out.println("ShowEditForm " + id);
         bookIml.get(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("BookForm.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("EditBook.jsp");
         dispatcher.forward(request, response);
     }
 
     private void updateBook(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         BookIml bookIml = new BookIml();
-        int id = Integer.parseInt(request.getParameter("book.id"));
+        int id = Integer.parseInt(request.getParameter("id"));
         String title = request.getParameter("title");
         String author = request.getParameter("author");
         String price = request.getParameter("price");
@@ -179,11 +165,12 @@ public class DaoController extends HttpServlet {
 
     private void deleteBook(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         BookIml bookIml = new BookIml();
-        int id = Integer.parseInt(request.getParameter("book.id"));
+        int id = Integer.parseInt(request.getParameter("id"));
         bookIml.delete(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("BookList.jsp");
         dispatcher.forward(request, response);
     }
+
 
     private void showNewForm(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException, SQLException {

@@ -118,7 +118,7 @@ import java.util.List;
 //    }
 //
 //    private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("BookForm.jsp");
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("EditBook.jsp");
 //        dispatcher.forward(request, response);
 //    }
 //
@@ -126,7 +126,7 @@ import java.util.List;
 //        BookDao bookDao = new BookDao();
 //        int id = Integer.parseInt(request.getParameter("id"));
 //        Book existingBook = bookDao.getBook(id);
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("BookForm.jsp");
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("EditBook.jsp");
 //        request.setAttribute("book", existingBook);
 //        dispatcher.forward(request, response);
 //    }

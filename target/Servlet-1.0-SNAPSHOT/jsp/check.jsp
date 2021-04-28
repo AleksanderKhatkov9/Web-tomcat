@@ -21,10 +21,18 @@
 <body>
 <div class="container">
     <div class="jumbotron">
+
+        <a href="menu.jsp"><img
+                src="https://img2.freepng.ru/20180429/zte/kisspng-computer-icons-avatar-user-laptop-5ae67d2c9fba76.3873242315250547646543.jpg"
+                width="50" height="50" alt="Пример"></a>
+        <br><br><br>
+
         <form action="creatUser" method="POST">
             <table class="table">
-                <h3 class="text-info">Регистрация</h3>
-                <img src="../../resources/jpg/reg.jpg" class="rounded" alt="Cinque Terre" width="200" height="160"/><br><br><br>
+                <h3 class="text-info">User registration</h3>
+
+                <img src="https://png.pngtree.com/png-clipart/20190924/original/pngtree-user-vector-avatar-png-image_4830521.jpg"
+                     class="rounded" alt="Cinque Terre" width="200" height="160"/><br><br><br>
                 <tr>
                     <td class="text-primary">UserName</td>
                     <td><input type="text" name="name" size="30"/></td>
@@ -38,9 +46,9 @@
                     <td><input type="email" name="email" size="30"/>
                 </tr>
             </table>
-            <button type="отправить" class="btn btn-success">Отправить</button>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="отмена" class="btn btn-danger">Отмена</button>
+            <button type="submit" class="btn btn-success">submit</button>
+            &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="cancel" class="btn btn-danger">cancel</button>
         </form>
     </div>
     <div class="jumbotron text-center" style="margin-bottom:0">
