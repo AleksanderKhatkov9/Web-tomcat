@@ -55,12 +55,12 @@ import java.util.List;
 //                requestDispatcher.forward(req, resp);
 //
 //            } else {
-//                RequestDispatcher requestDispatcher = req.getRequestDispatcher("errorCreateUser.jsp");
+//                RequestDispatcher requestDispatcher = req.getRequestDispatcher("error500.jsp");
 //                requestDispatcher.forward(req, resp);
 //            }
 //        } catch (IOException | SQLException e) {
 //            System.out.println("Исключение выброшено UserControllerCRUD");
-//            RequestDispatcher requestDispatcher = req.getRequestDispatcher("errorCreateUser.jsp");
+//            RequestDispatcher requestDispatcher = req.getRequestDispatcher("error500.jsp");
 //            requestDispatcher.forward(req, resp);
 //        }
 //    }

@@ -20,8 +20,8 @@ public class BookIml implements BookDAO {
     @Override
     public Connection getConnBook() throws SQLException, IOException, ClassNotFoundException {
         Properties prop = new Properties();
-        File file = new File("//home//sasha//IdeaProjects//Web-tomcat//src//main//resources//data.properties");
-//        File file = new File("C://Users//ipoli//IdeaProjects//Web-tomcat//src//main//resources//data.properties");
+//        File file = new File("//home//sasha//IdeaProjects//Web-tomcat//src//main//resources//data.properties");
+        File file = new File("C://Users//ipoli//IdeaProjects//Web-tomcat//src//main//resources//data.properties");
         FileInputStream in = new FileInputStream(file);
         if (in == null) {
             System.out.println("File read error");

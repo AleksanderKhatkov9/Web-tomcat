@@ -43,7 +43,7 @@
                             <td><c:out value="${book.author}"/></td>
                             <td><c:out value="${book.price}"/></td>
                             <td>
-                                <a href="edit?id=<c:out value='${book.id}' />">Edit</a>
+                                <a href="edit?id=<c:out value='${book.id}' />"></a><a href="EditBook.jsp">Edit</a>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="delete?id=<c:out value='${book.id}' />">Delete</a>
                             </td>

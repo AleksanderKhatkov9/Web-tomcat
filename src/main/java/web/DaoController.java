@@ -27,14 +27,10 @@ public class DaoController extends HttpServlet {
 
         try {
             switch (input) {
-//                case "insert":
-//                    saveBook(req, resp);
-//                    System.out.println("INSERT" + input);
+//                case "edit":
+//                    showEditForm(req, resp);
+//                    System.out.println("EDIT");
 //                    break;
-                case "edit":
-                    showEditForm(req, resp);
-                    System.out.println("EDIT");
-                    break;
                 case "delete":
                     deleteBook(req, resp);
                     System.out.println("DELETE");
@@ -73,12 +69,12 @@ public class DaoController extends HttpServlet {
 ////                RequestDispatcher dispatcher = req.getRequestDispatcher("BookList.jsp");
 ////                dispatcher.forward(req, resp);
 //            } else {
-//                RequestDispatcher requestDispatcher = req.getRequestDispatcher("errorCreateUser.jsp");
+//                RequestDispatcher requestDispatcher = req.getRequestDispatcher("error500.jsp");
 //                requestDispatcher.forward(req, resp);
 //            }
 //        } catch (IOException | SQLException e) {
 //            System.out.println("Исключение выброшено UserControllerDAO");
-//            RequestDispatcher requestDispatcher = req.getRequestDispatcher("errorCreateUser.jsp");
+//            RequestDispatcher requestDispatcher = req.getRequestDispatcher("error500.jsp");
 //            requestDispatcher.forward(req, resp);
 //        }
 //    }
@@ -111,16 +107,13 @@ public class DaoController extends HttpServlet {
                     System.out.println("UPDATE");
                     break;
                 default:
-                    listBook(req, resp);
+//                    listBook(req, resp);
                     break;
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
         }
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("errorCreateUser.jsp");
-        requestDispatcher.forward(req, resp);
     }
-
 
     private void saveBook(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         BookIml bookIml = new BookIml();

@@ -1,4 +1,3 @@
-
 <%--
   Created by IntelliJ IDEA.
   User: Nameless
@@ -14,6 +13,12 @@
     <title>Exception</title>
 </head>
 <body>
-<h2>Exception occurred while processing the request</h2>
+<h2>Exception http-status-500-internal-server-error </h2>
+<div class="container">
+    <div class="jumbotron">
+        <img src="https://darkstack.pro/wp-content/uploads/2020/01/http-status-500-internal-server-error.png"
+                width="1000" height="600" alt="Error">
+    </div>
+</div>
 </body>
 </html>

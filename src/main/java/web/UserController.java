@@ -52,7 +52,7 @@ public class UserController extends HttpServlet {
                 requestDispatcher.forward(request, response);
 
             } else {
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("errorCreateUser.jsp");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("error500.jsp");
                 requestDispatcher.forward(request, response);
             }
         } catch (IOException | SQLException e) {
